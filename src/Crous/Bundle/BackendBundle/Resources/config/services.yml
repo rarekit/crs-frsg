@@ -1,0 +1,5 @@
+services:
+    user_manager:
+        class: Crous\Bundle\BackendBundle\Manager\UserManager
+        arguments: [@doctrine.orm.entity_manager]
+

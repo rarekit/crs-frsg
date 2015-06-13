@@ -1,0 +1,4 @@
+crous_backend:
+    resource: "@CrousBackendBundle/Resources/config/routing.yml"
+    prefix:   /admin
+

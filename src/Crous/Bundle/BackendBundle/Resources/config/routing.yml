@@ -1,0 +1,13 @@
+crous_backend_homepage:
+    path:     /
+    defaults: { _controller: CrousBackendBundle:Default:index }
+
+crous_backend_login:
+    path:     /login
+    defaults: { _controller: CrousBackendBundle:Security:login }
+
+crous_backend_login_check:
+    path:     /login_check
+
+crous_backend_logout:
+    path:     /logout

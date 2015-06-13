@@ -1,0 +1,16 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 10.0.0.3
+    database_port: null
+    database_name: vbs_crous
+    database_user: root
+    database_password: root
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 206d4f7cdff46754a9cd915cc5540140b3994f1c
+    salt: d32f4i
+
