@@ -67,7 +67,11 @@ Setup Virtual Host
         </Directory>
     </VirtualHost>
 
+9 - Run website
+    
+    http://yourdomain/admin
 
+    Account: admin@crous.com/admin
 
  
 
