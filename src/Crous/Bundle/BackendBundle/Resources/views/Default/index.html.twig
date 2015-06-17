@@ -1,1 +1,69 @@
-Hello!
+{% extends 'CrousBackendBundle::layout.html.twig' %} 
+
+{% block body %}
+
+                <div id="myTabContent" class="tab-content">
+                <div id="myTabContent" class="tab-content">
+                  <div id="tab1" role="tabpanel" aria-labelledby="tab-1" class="tab-pane fade in active">
+                    <div class="text-block">
+                      <p class="text-large">Flux &lt;<i>nom-flux</i>&gt; CROUS &lt;<i>nom-CROUS</i>&gt; <br>Enregistrement n°<i>n</i></p>
+                    </div>
+                    <div class="content">
+                      <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group list-style">
+                        <div class="panel">
+                          <div id="headingOne" role="tab" class="panel-heading">
+                            <h4 id="item1" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">Champ 1      </a></h4>
+                          </div>
+                          <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                
+                              - Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)
+                            </div>
+                          </div>
+                        </div>
+                        <div class="panel">
+                          <div id="headingTwo" role="tab" class="panel-heading">
+                            <h4 id="item2" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">Champ 2</a></h4>
+                          </div>
+                          <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" class="panel-collapse collapse">
+                            <div class="panel-body">- Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)</div>
+                          </div>
+                        </div>
+                        <div class="panel">
+                          <div id="headingThree" role="tab" class="panel-heading">
+                            <h4 id="item3" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">Champ 3</a></h4>
+                          </div>
+                          <div id="collapseThree" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" class="panel-collapse collapse">
+                            <div class="panel-body">- Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <nav>
+                      <ul class="pager">
+                        <li><a href="backward.html" title="Backward" class="backward">Backward</a>
+                        </li>
+                        <li><a href="prev.html" title="Previous" class="prev">Previous</a>
+                        </li>
+                        <li><a href="next.html" title="Next" class="next">Next</a>
+                        </li>
+                        <li><a href="foward.html" title="Foward" class="foward">Forward</a>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+                  <div id="tab2" role="tabpanel" aria-labelledby="tab-2" class="tab-pane fade">
+                    <div class="content style-1">
+                      <p>Food truck fixie locavore, accusamus mcsweeney&apos;s marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.     </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="wrap-btn text-center">
+                <button type="button" id="ajouter" name="ajouter" class="btn btn-default">ajouter</button>
+                <button type="button" id="modifier" name="modifier" class="btn btn-default">modifier</button>
+                <button type="button" id="supPrimer" name="supPrimer" class="btn btn-primary">supPrimer</button>
+                <button type="button" id="abandon" name="abandon" class="btn btn-default">abandon</button>
+              </div>
+  
+{% endblock %}

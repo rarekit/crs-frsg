@@ -1,0 +1,14 @@
+{% set route = app.request.attributes.get('_route')%}
+<div class="navbar-tab">
+    <ul class="nav nav-tabs">
+        <li {%if route in ['crous_backend_region_list', 'crous_backend_region_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_region_list')}}">{{'Region Management'|trans}}</a>
+        </li>
+        <li {%if route in ['crous_backend_splash_list', 'crous_backend_splash_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_splash_list')}}">{{'Splash Management'|trans}}</a>
+        </li>
+        <li><a href="#">{{'Services Management'|trans}}</a></li>
+        <li><a href="#">{{'House Management'|trans}}</a></li>
+    </ul>
+</div>
+

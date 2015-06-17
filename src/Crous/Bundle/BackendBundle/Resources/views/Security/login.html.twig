@@ -8,8 +8,8 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="{{asset('assets/backend/css/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/backend/css/bootstrap-responsive.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/backend/default/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/backend/default/css/bootstrap-responsive.css')}}" rel="stylesheet">
     
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -17,20 +17,20 @@
     <![endif]-->
 
     <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="{{asset('assets/backend/ico/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/backend/ico/apple-touch-icon-144-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('assets/backend/ico/apple-touch-icon-114-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('assets/backend/ico/apple-touch-icon-72-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('assets/backend/ico/apple-touch-icon-57-precomposed.png')}}">
+    <link rel="shortcut icon" href="{{asset('assets/backend/default/ico/favicon.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/backend/default/ico/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('assets/backend/default/ico/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('assets/backend/default/ico/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('assets/backend/default/ico/apple-touch-icon-57-precomposed.png')}}">
   </head>
   <body>
     <form class="form-horizontal form-login" action="{{path('crous_backend_login_check')}}" method="post">
       <fieldset>
         <legend>System Login</legend>
-        {% if error is defined %}
+        {% if error is defined and error != null %}
         <div class="alert alert-danger">
             <button class="close" data-close="alert"></button>
-            <span>{{ 'Tên đăng nhập hoặc mật khẩu không chính xác'|trans }} </span>                
+            <span>{{ error.message }} </span>                
         </div>
         {% endif %} 
         <div class="control-group">
@@ -53,8 +53,8 @@
         <button type="submit" class="btn btn-primary" data-loading-text="loading..." id="form-login-btnLogin">Login</button>
       </div>      
     </form>
-    <script src="{{asset('assets/backend/js/jquery-1.7.2.min.js')}}"></script>    
-    <script src="{{asset('assets/backend/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/backend/default/js/jquery-1.7.2.min.js')}}"></script>    
+    <script src="{{asset('assets/backend/default/js/bootstrap.min.js')}}"></script>
     <script>
       $('.form-login').css({
         'margin-left':-($('.form-login').outerWidth()/2),

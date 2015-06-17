@@ -1,15 +1,8 @@
 <?php
-/**
- * This file is part of the Crous package.
- *
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+
 namespace Crous\Bundle\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Crous\Bundle\BackendBundle\Entity\Base\EntityInterface;
 
 /**
  * Role
@@ -17,7 +10,7 @@ use Crous\Bundle\BackendBundle\Entity\Base\EntityInterface;
  * @ORM\Table("role")
  * @ORM\Entity(repositoryClass="Crous\Bundle\BackendBundle\Repository\RoleRepository")
  */
-class Role implements EntityInterface
+class Role
 {
     /**
      * @var integer
@@ -155,16 +148,6 @@ class Role implements EntityInterface
      * @return integer 
      */
     public function isActive()
-    {
-        return $this->active;
-    }
-
-    /**
-     * Get active
-     *
-     * @return integer 
-     */
-    public function getActive()
     {
         return $this->active;
     }

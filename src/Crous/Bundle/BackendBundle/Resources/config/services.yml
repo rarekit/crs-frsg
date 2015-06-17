@@ -1,5 +1,20 @@
 services:
+    entity_factory:
+        class: Crous\Bundle\BackendBundle\Entity\Base\EntityFactory
+        arguments: [@doctrine.orm.entity_manager]
+    form_factory:
+        class: Crous\Bundle\BackendBundle\Form\Base\FormFactory
+        arguments: [@service_container]
     user_manager:
         class: Crous\Bundle\BackendBundle\Manager\UserManager
+        arguments: [@doctrine.orm.entity_manager]
+    role_manager:
+        class: Crous\Bundle\BackendBundle\Manager\RoleManager
+        arguments: [@doctrine.orm.entity_manager]
+    region_manager:
+        class: Crous\Bundle\BackendBundle\Manager\RegionManager
+        arguments: [@doctrine.orm.entity_manager]
+    splash_manager:
+        class: Crous\Bundle\BackendBundle\Manager\SplashManager
         arguments: [@doctrine.orm.entity_manager]
 

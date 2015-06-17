@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html lang="en" class="no-js ie ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" class="no-js ie ie9"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en" class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><![endif]-->
+    <title>Homepage</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{asset("assets/backend/crous/css/libs.css")}}">
+    <link rel="stylesheet" href="{{asset("assets/backend/crous/css/style.css")}}">
+    <!--[if lte IE 9]><lin rel="stylesheet" href="{{asset("assets/backend/crous/css/ie.css")}}"><![endif]-->
+    <link rel="stylesheet" href="{{asset("assets/backend/crous/css/print.css")}}" media="print">
+    <script src="{{asset("assets/backend/crous/js/modernizr.js")}}"></script>
+  </head>
+  <body class="home">
+    <header>
+        {{include('CrousBackendBundle:Block:header.html.twig')}}      
+    </header>
+    <main>
+      <section class="container">
+        <div class="inner">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+                {% block sidebar %}
+                    {{include('CrousBackendBundle:Block:sidebar.html.twig')}}      
+                {%endblock%}        
+            </div>
+            <div class="col-xs-12 col-sm-8">
+                <div class="row navbar-tab-content">
+                {% block body%} {%endblock%}
+                </div>
+            </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+        {% block footer %}
+            {{include('CrousBackendBundle:Block:footer.html.twig')}}      
+        {% endblock%}
+    </footer>
+    <script src="{{asset("assets/backend/crous/js/l10n.js")}}"></script>
+    <script src="{{asset("assets/backend/crous/js/libs.js")}}"></script>
+    <script src="{{asset("assets/backend/crous/js/script.js")}}"></script>
+    <script src="{{asset("assets/backend/crous/js/bootstrap.js")}}"></script>
+    <!--script src="//localhost:35729/livereload.js"></script-->
+    <!--[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+    <noscript>JavaScript is off. Please enable to view full site.</noscript>
+  </body>
+</html>

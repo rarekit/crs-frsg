@@ -11,3 +11,12 @@ crous_backend_login_check:
 
 crous_backend_logout:
     path:     /logout
+
+crous_backend_region:
+    resource: "@CrousBackendBundle/Resources/config/routing/region.yml"
+    prefix:   /region
+    
+crous_backend_splash:
+    resource: "@CrousBackendBundle/Resources/config/routing/splash.yml"
+    prefix:   /splash
+    

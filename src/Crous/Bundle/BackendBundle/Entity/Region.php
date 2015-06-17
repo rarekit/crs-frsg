@@ -10,14 +10,17 @@ namespace Crous\Bundle\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Crous\Bundle\BackendBundle\Entity\Base\EntityInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Role
+ * Region
  *
- * @ORM\Table("role")
- * @ORM\Entity(repositoryClass="Crous\Bundle\BackendBundle\Repository\RoleRepository")
+ * @ORM\Table("regions")
+ * @ORM\Entity(repositoryClass="Crous\Bundle\BackendBundle\Repository\RegionRepository")
+ * @UniqueEntity("code", message="This value is already in use.")
  */
-class Role implements EntityInterface
+class Region implements EntityInterface
 {
     /**
      * @var integer
@@ -32,22 +35,24 @@ class Role implements EntityInterface
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=128)
+     * @Assert\NotBlank(message="This value must not be empty.")
      */
     private $name;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="role", type="string", length=64)
+     * @ORM\Column(name="code", type="integer", unique=true)
      */
-    private $role;
+    private $code;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="type", type="integer")
+     * @ORM\Column(name="type", type="string", length=64)
+     * @Assert\Email(message="This value is not a valid email address.")
      */
-    private $type;
+    private $email;
 
     /**
      * @var integer
@@ -71,7 +76,7 @@ class Role implements EntityInterface
      * Set name
      *
      * @param string $name
-     * @return Role
+     * @return Region
      */
     public function setName($name)
     {
@@ -91,72 +96,62 @@ class Role implements EntityInterface
     }
 
     /**
-     * Set role
+     * Set code
      *
-     * @param string $role
-     * @return Role
+     * @param integer $code
+     * @return Region
      */
-    public function setRole($role)
+    public function setCode($code)
     {
-        $this->role = $role;
+        $this->code = $code;
 
         return $this;
     }
 
     /**
-     * Get role
-     *
-     * @return string 
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-
-    /**
-     * Set type
-     *
-     * @param integer $type
-     * @return Role
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
-    /**
-     * Get type
+     * Get code
      *
      * @return integer 
      */
-    public function getType()
+    public function getCode()
     {
-        return $this->type;
+        return $this->code;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Region
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
      * Set active
      *
      * @param integer $active
-     * @return Role
+     * @return Region
      */
     public function setActive($active)
     {
         $this->active = $active;
 
         return $this;
-    }
-
-    /**
-     * Get active
-     *
-     * @return integer 
-     */
-    public function isActive()
-    {
-        return $this->active;
     }
 
     /**

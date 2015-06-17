@@ -1,0 +1,11 @@
+crous_backend_splash_list:
+    path:     /
+    defaults: { _controller: CrousBackendBundle:Splash:index }
+
+crous_backend_splash_add:
+    path:     /add/{id}
+    defaults: { _controller: CrousBackendBundle:Splash:add, id:null }
+    
+crous_backend_splash_delete:
+    path:     /delete/{id}
+    defaults: { _controller: CrousBackendBundle:Splash:delete}

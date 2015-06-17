@@ -10,7 +10,8 @@ parameters:
     mailer_host: 127.0.0.1
     mailer_user: null
     mailer_password: null
-    locale: en
+    locale: fr
     secret: 206d4f7cdff46754a9cd915cc5540140b3994f1c
     salt: d32f4i
+    item_per_page: 10
 

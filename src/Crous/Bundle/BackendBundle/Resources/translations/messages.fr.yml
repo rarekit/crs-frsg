@@ -1,0 +1,27 @@
+Logout: Déconnextion
+Region Management: Région
+House Management: House
+Services Management: Services
+Splash Management: Splash
+
+#Actions
+Add New: Ajouter
+Edit: Éditer
+Delete: Supprimer
+Action: Action
+
+#Fields
+Region Name: Nom de la région
+Region: Région
+Content: Content
+
+#message
+Your changes were saved: Vos modifications ont été enregistrées
+The object was created: L'objet a été créé
+The input values is invalid: Les valeurs d'entrée est invalide
+Error occurred while updating: Erreur lors de la mise à jour
+Error occurred while creating object: Erreur lors de la création de l'objet
+Do you want to delete this record?: Voulez-vous supprimer cet enregistrement?
+The object was deleted: L'objet a été supprimé
+The object does not exist: L'objet ne existe pas
+

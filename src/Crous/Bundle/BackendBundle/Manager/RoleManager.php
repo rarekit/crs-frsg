@@ -11,9 +11,9 @@ namespace Crous\Bundle\BackendBundle\Manager;
 use Crous\Bundle\BackendBundle\Manager\Base\BaseManager;
 
 /**
- * UserManager
+ * RoleManager
  */
-class UserManager extends BaseManager {
-    protected $_entityName = 'User';
+class RoleManager extends BaseManager {
+    protected $_entityName = 'Role';
 }
 
