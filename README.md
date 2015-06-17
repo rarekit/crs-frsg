@@ -11,18 +11,22 @@ System requirement
 For the first installation
 --------------------------
 1 - At the web root run this in your terminal to get the latest Composer version
+
     curl -sS https://getcomposer.org/installer | php
 
 2 - Updating vendor & generate autoload file by this command 
+
     php composer.phar update
 
 3 - Create and writable permission for for folders app/cache and app/logs
+
     sudo chmod -R 755 app/cache
     sudo chmod -R 755 app/logs
 
 Setup Database
 --------------
 4 - Update the database connection info in app/config/parameters.yml 
+
     database_host: 10.0.0.3
     database_port: null
     database_name: vbs_crous
@@ -30,14 +34,17 @@ Setup Database
     database_password: root
 
 5 - Run this command to create tables
+
     php app/console doctrine:schema:update --force
 
 6 - Initialize basic data by this command
+
     php app/console crous:populate:data
     
 Clear cache
 -----------
 7 - Clear cache production and develop environment
+
     php app/console cache:clear --env=prod
     php app/console cache:clear --env=dev
 
