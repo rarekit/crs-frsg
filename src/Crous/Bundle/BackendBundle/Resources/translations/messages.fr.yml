@@ -1,8 +1,9 @@
 Logout: Déconnextion
-Region Management: Région
-House Management: House
-Services Management: Services
-Splash Management: Splash
+Region Management: Gestion de Région
+House Management: Festion de la Chambre
+Service Management: Gestion des services
+Splash Management: Gestion Splash
+Online Service Management: Gestion des services en ligne
 
 #Actions
 Add New: Ajouter
@@ -24,4 +25,5 @@ Error occurred while creating object: Erreur lors de la création de l'objet
 Do you want to delete this record?: Voulez-vous supprimer cet enregistrement?
 The object was deleted: L'objet a été supprimé
 The object does not exist: L'objet ne existe pas
+
 

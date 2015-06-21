@@ -1,0 +1,49 @@
+#Crous backend configuration
+crous_backend:
+    entities: 
+        user: 
+            class: \Crous\Bundle\BackendBundle\Entity\User
+        role: 
+            class: \Crous\Bundle\BackendBundle\Entity\Role
+        region: 
+            class: \Crous\Bundle\BackendBundle\Entity\Region
+        splash:
+            class: \Crous\Bundle\BackendBundle\Entity\Splash
+        house:
+            class: \Crous\Bundle\BackendBundle\Entity\House
+        service:
+            class: \Crous\Bundle\BackendBundle\Entity\Service
+        onlineService:
+            class: \Crous\Bundle\BackendBundle\Entity\OnlineService
+    managers: 
+        user: 
+            class: \Crous\Bundle\BackendBundle\Manager\UserManager
+        role: 
+            class: \Crous\Bundle\BackendBundle\Manager\RoleManager
+        region: 
+            class: \Crous\Bundle\BackendBundle\Manager\RegionManager
+        splash:
+            class: \Crous\Bundle\BackendBundle\Manager\SplashManager
+        house:
+            class: \Crous\Bundle\BackendBundle\Manager\HouseManager
+        service:
+            class: \Crous\Bundle\BackendBundle\Manager\ServiceManager
+        onlineService:
+            class: \Crous\Bundle\BackendBundle\Manager\OnlineServiceManager
+    forms: 
+        region: 
+            class: \Crous\Bundle\BackendBundle\Form\Type\RegionType
+            data_class: Crous\Bundle\BackendBundle\Entity\Region
+        splash:
+            class: \Crous\Bundle\BackendBundle\Form\Type\SplashType
+            data_class: Crous\Bundle\BackendBundle\Entity\Splash
+        house:
+            class: \Crous\Bundle\BackendBundle\Form\Type\HouseType
+            data_class: Crous\Bundle\BackendBundle\Entity\House
+        service:
+            class: \Crous\Bundle\BackendBundle\Form\Type\ServiceType
+            data_class: Crous\Bundle\BackendBundle\Entity\Service
+        onlineService:
+            class: \Crous\Bundle\BackendBundle\Form\Type\OnlineServiceType
+            data_class: Crous\Bundle\BackendBundle\Entity\OnlineService
+        

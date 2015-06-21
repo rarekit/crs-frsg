@@ -21,6 +21,9 @@ class CrousBackendExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $container->setParameter('crous_backend.entities', $config['entities']);
+        $container->setParameter('crous_backend.managers', $config['managers']);
+        $container->setParameter('crous_backend.forms', $config['forms']);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');

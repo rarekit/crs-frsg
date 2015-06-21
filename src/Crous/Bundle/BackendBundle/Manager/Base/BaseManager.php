@@ -69,5 +69,30 @@ class BaseManager implements ManagerInterface {
             return false;
         }
     }
+    
+    /**
+     * get house by criterias
+     * 
+     * @param array   $criteria
+     * @param array   $order
+     * @param integer $limit
+     * @param integer $offset
+     * @return null|array
+     */
+    public function findBy($criteria, $order, $limit = null, $offset = null)
+    {
+        return $this->getRepository()->findBy($criteria, $order, $limit, $offset);
+    }
+
+    /**
+     * get total of records by criterias
+     * 
+     * @param type $criteria
+     * @return integer
+     */
+    public function countBy($criteria = array())
+    {
+        return $this->getRepository()->countBy($criteria);
+    }
 
 }

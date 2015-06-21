@@ -61,18 +61,17 @@ class PopulateDataCommand extends ContainerAwareCommand
                 array('admin', 'admin', 'Johnny', 'Depp', 'ROLE_ADMIN', 'admin@crous.com', true),
             );
             /* @var $userManager \Crous\Bundle\BackendBundle\Manager\UserManager */
-            $userManager = $this->getContainer()->get('user_manager');
-            $roleManager = $this->getContainer()->get('role_manager');
+            $userManager = $this->getContainer()->get('manager_factory')->create('user');
+            $roleManager = $this->getContainer()->get('manager_factory')->create('role');
             foreach ($users as $item) {
                 /* @var $user \Crous\Bundle\BackendBundle\Entity\User */
-                $user = $this->getContainer()->get('entity_factory')->create('User');
+                $user = $this->getContainer()->get('entity_factory')->create('user');
                 $user->setUsername($item[0])
-                    ->setRegionId(1)
                     ->setPassword($item[1])
                     ->setFirstname($item[2])
                     ->setLastname($item[3])
                     ->setEmail($item[5])
-                    ->setActive(1)
+                    ->setActive(true)
                     ;
 
                 $role = $roleManager->getRepository()->findOneBy(array('role'=>$item[4]));
@@ -83,7 +82,7 @@ class PopulateDataCommand extends ContainerAwareCommand
                 //Encrypt password
                 $factory = $this->getContainer()->get('security.encoder_factory');
                 $encoder = $factory->getEncoder($user);        
-                $password = $encoder->encodePassword($user->getPassword(), $user->getSalt());  
+                $password = $encoder->encodePassword($user->getPassword(), '');  
 
                 $user->setPassword($password);
                 $userManager->save($user);
@@ -102,10 +101,10 @@ class PopulateDataCommand extends ContainerAwareCommand
                 array('Guest', 'ROLE_GUEST'),
             );
             /* @var $roleManager \Crous\Bundle\BackendBundle\Manager\RoleManager */
-            $roleManager = $this->getContainer()->get('role_manager');
+            $roleManager = $this->getContainer()->get('manager_factory')->create('role');
             foreach ($roles as $item) {
                 /* @var $role \Crous\Bundle\BackendBundle\Entity\Role */
-                $role = $this->getContainer()->get('entity_factory')->create('Role');
+                $role = $this->getContainer()->get('entity_factory')->create('role');
                 $role->setName($item[0])
                     ->setRole($item[1])
                     ->setType(1)

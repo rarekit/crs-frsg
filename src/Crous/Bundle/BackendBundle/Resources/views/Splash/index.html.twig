@@ -17,13 +17,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for splash in splashs%}
+            {% for splash in entities%}
             <tr>
                 <td>{{splash.region.name}}</td>
                 <td>{{splash.content}}</td>
                 <td>
                     <a href="{{path('crous_backend_splash_add', {id: splash.id})}}">{{'Edit'|trans}}</a> |
-                    <a href="{{path('crous_backend_splash_delete', {id: splash.id, token: token})}}">{{'Delete'|trans}}</a>
+                    <a onclick="return confirm('{{'Do you want to delete this record?'|trans}}');" href="{{path('crous_backend_splash_delete', {id: splash.id, token: token})}}">{{'Delete'|trans}}</a>
                 </td>
             </tr>
             {% endfor %}

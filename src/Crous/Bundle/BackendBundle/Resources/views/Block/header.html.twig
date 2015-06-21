@@ -1,3 +1,4 @@
+{% set route = app.request.attributes.get('_route')%}
 <section class="container">
     <div class="top">
         <a href="index.html" title="Crous" class="logo">
@@ -12,9 +13,11 @@
         <!-- Collect the nav links, forms, and other content for toggling-->
         <div id="navbar-main" aria-expanded="false" style="height: 1px;" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="ACCUEIL.html" title=" ACCUEIL"> ACCUEIL</a>
+              <li {%if route in ['crous_backend_homepage'] %}class="active"{%endif%}>
+                  <a href="{{path('crous_backend_homepage')}}" title=" ACCUEIL"> ACCUEIL</a>
               </li>
-              <li><a href="GESTION DES FLUX.html" title="GESTION DES FLUX">GESTION DES FLUX</a>
+              <li {%if route in ['crous_backend_flux_dashboard', 'crous_backend_house', 'crous_backend_service', 'crous_backend_region', 'crous_backend_splash', 'crous_backend_onlineservice'] %}class="active"{%endif%}>
+                  <a href="{{path('crous_backend_flux_dashboard')}}" title="GESTION DES FLUX">GESTION DES FLUX</a>
               </li>
               <li><a href="NOTIFICATIONS PUSH.html" title="NOTIFICATIONS PUSH">NOTIFICATIONS PUSH</a>
               </li>

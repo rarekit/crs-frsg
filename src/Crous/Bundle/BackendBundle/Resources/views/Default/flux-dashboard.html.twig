@@ -1,0 +1,24 @@
+{% extends 'CrousBackendBundle::layout.html.twig' %} 
+
+{% block body %}
+{% set route = app.request.attributes.get('_route')%}
+<div class="navbar-tab">
+    <ul class="nav nav-tabs">
+        <li {%if route in ['crous_backend_region_list', 'crous_backend_region_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_region_list')}}">{{'Region Management'|trans}}</a>
+        </li>
+        <li {%if route in ['crous_backend_splash_list', 'crous_backend_splash_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_splash_list')}}">{{'Splash Management'|trans}}</a>
+        </li>
+        <li {%if route in ['crous_backend_house_list', 'crous_backend_house_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_house_list')}}">{{'House Management'|trans}}</a>
+        </li>
+        <li {%if route in ['crous_backend_service_list', 'crous_backend_service_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_service_list')}}">{{'Service Management'|trans}}</a>
+        </li>
+        <li {%if route in ['crous_backend_onlineservice_list', 'crous_backend_onlineservice_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_onlineservice_list')}}">{{'Online Service Management'|trans}}</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

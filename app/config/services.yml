@@ -4,6 +4,11 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    crous.image_type:
+        class: Crous\Bundle\BackendBundle\Form\Field\ImageType
+        tags:
+            - { name: form.type, alias: image }
+#    crous.image_type_extension:
+#        class: Crous\Bundle\BackendBundle\Form\Extension\ImageTypeExtension
+#        tags:
+#            - { name: form.type_extension, alias: image }

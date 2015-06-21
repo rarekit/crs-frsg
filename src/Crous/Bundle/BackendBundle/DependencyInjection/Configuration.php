@@ -19,10 +19,50 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('crous_backend');
-
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        
+        $rootNode
+            ->children()
+                ->arrayNode('entities')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('class')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('alias')
+                                ->defaultNull()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('managers')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('class')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('alias')
+                                ->defaultNull()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+                ->arrayNode('forms')
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('class')
+                                ->isRequired()
+                                ->cannotBeEmpty()
+                            ->end()
+                            ->scalarNode('data_class')
+                                ->defaultNull()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

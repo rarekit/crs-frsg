@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('CrousBackendBundle:Default:index.html.twig');
     }
+    
+    public function fluxDashboardAction()
+    {
+        return $this->render('CrousBackendBundle:Default:flux-dashboard.html.twig');
+    }
 }

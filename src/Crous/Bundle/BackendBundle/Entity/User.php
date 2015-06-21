@@ -31,13 +31,6 @@ class User implements UserInterface, AdvancedUserInterface, EntityInterface, \Se
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="region_id", type="integer")
-     */
-    private $regionId;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=64)
@@ -78,6 +71,13 @@ class User implements UserInterface, AdvancedUserInterface, EntityInterface, \Se
      * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
      */
     private $role;
+    
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     */
+    private $region;
 
     /**
      * @var integer
@@ -95,29 +95,6 @@ class User implements UserInterface, AdvancedUserInterface, EntityInterface, \Se
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set regionId
-     *
-     * @param integer $regionId
-     * @return User
-     */
-    public function setRegionId($regionId)
-    {
-        $this->regionId = $regionId;
-
-        return $this;
-    }
-
-    /**
-     * Get regionId
-     *
-     * @return integer 
-     */
-    public function getRegionId()
-    {
-        return $this->regionId;
     }
 
     /**
@@ -343,7 +320,7 @@ class User implements UserInterface, AdvancedUserInterface, EntityInterface, \Se
      */
     public function getSalt()
     {
-        return 'a45ft';
+        return '';
     }
 
     /**
@@ -367,5 +344,28 @@ class User implements UserInterface, AdvancedUserInterface, EntityInterface, \Se
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Crous\Bundle\BackendBundle\Entity\Region $region
+     * @return User
+     */
+    public function setRegion(\Crous\Bundle\BackendBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Crous\Bundle\BackendBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

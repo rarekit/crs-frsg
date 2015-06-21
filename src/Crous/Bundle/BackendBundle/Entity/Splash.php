@@ -41,6 +41,7 @@ class Splash implements EntityInterface
      * @var integer
      *
      * @ORM\Column(name="type", type="text")
+     * @Assert\NotBlank(message="This value must not be empty.")
      */
     private $content;
 

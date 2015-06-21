@@ -12,6 +12,10 @@ crous_backend_login_check:
 crous_backend_logout:
     path:     /logout
 
+crous_backend_flux_dashboard:
+    path:     /flux-dashboard
+    defaults: { _controller: CrousBackendBundle:Default:fluxDashboard }
+
 crous_backend_region:
     resource: "@CrousBackendBundle/Resources/config/routing/region.yml"
     prefix:   /region
@@ -19,4 +23,16 @@ crous_backend_region:
 crous_backend_splash:
     resource: "@CrousBackendBundle/Resources/config/routing/splash.yml"
     prefix:   /splash
+    
+crous_backend_house:
+    resource: "@CrousBackendBundle/Resources/config/routing/house.yml"
+    prefix:   /house
+    
+crous_backend_service:
+    resource: "@CrousBackendBundle/Resources/config/routing/service.yml"
+    prefix:   /service
+    
+crous_backend_onlineservice:
+    resource: "@CrousBackendBundle/Resources/config/routing/onlineservice.yml"
+    prefix:   /onlineservice
     

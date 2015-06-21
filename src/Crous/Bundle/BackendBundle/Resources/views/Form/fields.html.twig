@@ -83,5 +83,22 @@
     <input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} data-type="elfinder-input-field" />
 {% endblock %}
 
+{% block file_widget %}
+    {% spaceless %}
+    <div class="form-group">
+        {% if thumbnail_url is defined and thumbnail_url is not null %}
+            <img src="{{ asset(thumbnail_url) }}"/>
+        {% endif %}
+        {{ form_widget(form) }}
+    </div>
+    <div class="form-group">
+        <label class="control-label">{{ 'Thumbnail Url'|trans }}: </label><br>
+        {% if thumbnail_url is defined and thumbnail_url is not null %}
+            <a target="_blank" href="{{ asset(thumbnail_url) }}">{{ app.request.getSchemeAndHttpHost() ~ asset(thumbnail_url) }}</a>
+        {% endif %}
+    </div>
+    {% endspaceless %}
+{% endblock file_widget %}
+
 
 

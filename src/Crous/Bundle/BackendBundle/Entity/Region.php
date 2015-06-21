@@ -43,6 +43,7 @@ class Region implements EntityInterface
      * @var integer
      *
      * @ORM\Column(name="code", type="integer", unique=true)
+     * @Assert\NotBlank(message="This value must not be empty.")
      */
     private $code;
 
@@ -50,6 +51,7 @@ class Region implements EntityInterface
      * @var integer
      *
      * @ORM\Column(name="type", type="string", length=64)
+     * @Assert\NotBlank(message="This value must not be empty.")
      * @Assert\Email(message="This value is not a valid email address.")
      */
     private $email;
@@ -57,7 +59,7 @@ class Region implements EntityInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="active", type="integer", options={"default":1})
+     * @ORM\Column(name="active", type="boolean", options={"default":1})
      */
     private $active;
 

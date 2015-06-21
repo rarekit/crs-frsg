@@ -1,0 +1,11 @@
+crous_backend_service_list:
+    path:     /
+    defaults: { _controller: CrousBackendBundle:Service:index }
+
+crous_backend_service_add:
+    path:     /add/{id}
+    defaults: { _controller: CrousBackendBundle:Service:add, id:null }
+    
+crous_backend_service_delete:
+    path:     /delete/{id}
+    defaults: { _controller: CrousBackendBundle:Service:delete}

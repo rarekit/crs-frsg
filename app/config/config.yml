@@ -2,7 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-
+    - { resource: crous_backend.yml }
+    
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -71,3 +72,5 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+gregwar_image: ~
