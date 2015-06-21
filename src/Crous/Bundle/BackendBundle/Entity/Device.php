@@ -361,10 +361,10 @@ class Device implements EntityInterface
     /**
      * Set dateRegistration
      *
-     * @param \timestamp $dateRegistration
+     * @param  $dateRegistration
      * @return Device
      */
-    public function setDateRegistration(\timestamp $dateRegistration)
+    public function setDateRegistration($dateRegistration)
     {
         $this->dateRegistration = $dateRegistration;
 
