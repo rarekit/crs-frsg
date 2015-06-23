@@ -8,10 +8,11 @@
  */
 namespace Crous\Bundle\BackendBundle\Controller;
 
+use Crous\Bundle\BackendBundle\Controller\CRUDController as Controller;
 /**
  * ServiceController
  */
-class ServiceController extends BaseController
+class ServiceController extends Controller
 {
     protected $_ctrKey = 'service';
 }

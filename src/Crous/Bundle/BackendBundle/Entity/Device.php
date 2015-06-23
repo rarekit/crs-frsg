@@ -55,8 +55,7 @@ class Device implements EntityInterface
     
     /**
      * @var datetime
-     * @Gedmo\Timestampable()
-     * @ORM\Column(name="date_registration", type="datetime", nullable=true)
+     * @ORM\Column(name="date_registration", type="time", nullable=true)
      */
     private $dateRegistration;
     

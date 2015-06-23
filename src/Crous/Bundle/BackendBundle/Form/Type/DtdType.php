@@ -14,13 +14,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Crous\Bundle\BackendBundle\Form\Event\OnlineServiceSubscriber;
+use Crous\Bundle\BackendBundle\Form\Event\DtdSubscriber;
 
 /**
- * OnlineServiceType
+ * DtdType
  *
  */
-class OnlineServiceType extends AbstractType
+class DtdType extends AbstractType
 {
 
     /**
@@ -47,52 +47,31 @@ class OnlineServiceType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('region', null, array(
-            'label' => 'Region',
-            'property' => 'name',
-            'empty_value' => "Select a region",
+        $builder->add('name', null, array(
+            'label' => 'Label',
             'attr' => array(
                 'class' => 'form-control',
-                'placeholder' => 'Region',
+                'placeholder' => 'Label'
             ),
             'required' => true
-        ))->add('title', null, array(
-            'label' => 'Title',
+        ))->add('dtd', null, array(
+            'label' => 'Url DTD',
             'attr' => array(
                 'class' => 'form-control',
-                'placeholder' => 'Title'
+                'placeholder' => 'Url DTD'
             ),
             'required' => true
-        ))->add('shortDesc', null, array(
-            'label' => 'Short Description',
-            'attr' => array(
-                'class' => 'form-control',
-                'placeholder' => 'Short Description',
-            ),
-            'required' => false
-        ))->add('link', null, array(
-            'label' => 'Link',
-            'attr' => array(
-                'class' => 'form-control',
-                'placeholder' => 'Link',
-            ),
-            'required' => false
-        ))->add('file', 'image', array(
-                'label' => 'Image',
-                'attr' => array(
-                    'placeholder' => 'Image',
-                ),
-                'required' => false
         ))
         ;
 
-        $builder->addEventSubscriber(new OnlineServiceSubscriber($this->_container));
+        $builder->addEventSubscriber(new DtdSubscriber($this->_container));
     }
 
     /*
      * (non-PHPdoc)
      * @see \Symfony\Component\Form\AbstractType::setDefaultOptions()
      */
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -107,7 +86,7 @@ class OnlineServiceType extends AbstractType
 
     public function getName()
     {
-        return 'onlineservice';
+        return 'dtd';
     }
 
 }

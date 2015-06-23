@@ -8,10 +8,12 @@
  */
 namespace Crous\Bundle\BackendBundle\Controller;
 
+use Crous\Bundle\BackendBundle\Controller\CRUDController as Controller;
+
 /**
  * OnlineServiceController
  */
-class OnlineServiceController extends BaseController
+class OnlineServiceController extends Controller
 {
     protected $_ctrKey = 'onlineService';
 }

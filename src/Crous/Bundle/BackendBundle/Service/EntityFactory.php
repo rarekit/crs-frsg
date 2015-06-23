@@ -16,18 +16,18 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class EntityFactory {
 
     protected $_container;
-    protected $_entities;
+    protected $_data;
 
     /**
      * Constructor
      * 
      * @param ContainerInterface $container
-     * @param array $entities
+     * @param array $data
      */
-    public function __construct(ContainerInterface $container, $entities)
+    public function __construct(ContainerInterface $container, $data = array())
     {
         $this->_container = $container;   
-        $this->_entities = $entities;
+        $this->_data = $data;
     }
 
     /**
@@ -40,8 +40,8 @@ class EntityFactory {
     public function create($name, $args=array())
     {
         $entity = null;
-        if (isset($this->_entities[strtolower($name)])) {
-            $entity = new $this->_entities[strtolower($name)]['class']();
+        if (isset($this->_data[$name])) {
+            $entity = new $this->_data[$name]['entity_class']();
         } 
         
         return $entity;

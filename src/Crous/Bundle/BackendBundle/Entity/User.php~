@@ -1,10 +1,17 @@
 <?php
-
+/**
+ * This file is part of the Crous package.
+ *
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 namespace Crous\Bundle\BackendBundle\Entity;
 
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
+use Crous\Bundle\BackendBundle\Entity\Base\EntityInterface;
 
 /**
  * User
@@ -12,7 +19,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table("user")
  * @ORM\Entity(repositoryClass="Crous\Bundle\BackendBundle\Repository\UserRepository")
  */
-class User implements UserInterface, AdvancedUserInterface, \Serializable
+class User implements UserInterface, AdvancedUserInterface, EntityInterface, \Serializable
 {
     /**
      * @var integer
@@ -22,13 +29,6 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="region_id", type="integer")
-     */
-    private $regionId;
 
     /**
      * @var string
@@ -71,6 +71,13 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable
      * @ORM\JoinColumn(name="role_id", referencedColumnName="id")
      */
     private $role;
+    
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     */
+    private $region;
 
     /**
      * @var integer
@@ -88,29 +95,6 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set regionId
-     *
-     * @param integer $regionId
-     * @return User
-     */
-    public function setRegionId($regionId)
-    {
-        $this->regionId = $regionId;
-
-        return $this;
-    }
-
-    /**
-     * Get regionId
-     *
-     * @return integer 
-     */
-    public function getRegionId()
-    {
-        return $this->regionId;
     }
 
     /**
@@ -267,7 +251,9 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable
      */ 
     public function getRoles() {
         $roles = array();
-        $roles[] = "ROLE_ADMIN";
+        if ($this->getRole() != null) {
+            $roles[] = $this->getRole()->getRole();
+        }
         
         return $roles;
     }
@@ -334,6 +320,52 @@ class User implements UserInterface, AdvancedUserInterface, \Serializable
      */
     public function getSalt()
     {
-        return 'a45ft';
+        return '';
+    }
+
+    /**
+     * Set role
+     *
+     * @param \Crous\Bundle\BackendBundle\Entity\Role $role
+     * @return User
+     */
+    public function setRole(\Crous\Bundle\BackendBundle\Entity\Role $role = null)
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Crous\Bundle\BackendBundle\Entity\Role 
+     */
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Crous\Bundle\BackendBundle\Entity\Region $region
+     * @return User
+     */
+    public function setRegion(\Crous\Bundle\BackendBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Crous\Bundle\BackendBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

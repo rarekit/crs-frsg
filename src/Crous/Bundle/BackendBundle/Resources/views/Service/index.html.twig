@@ -8,9 +8,16 @@
     <div class="btn-toolbar pull-right" style="margin-bottom: 9px">
         <a class="btn btn-default" href="{{path('crous_backend_service_add')}}" role="button">{{'Add New'|trans}}</a>     
     </div>
+    <div class="form-body">
+        <form class="form-inline" method="get" action="" novalidate="novalidate">
+            {{form_widget(filterForm)}}
+            <button type="submit" class="btn btn-default">{{'Search'|trans}}</button>
+        </form>   
+    </div>
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th width="1%">{{'#'|trans}}</th>
                 <th>{{'Title'|trans}}</th>
                 <th>{{'Region'|trans}}</th>
                 <th width="20%">{{'Action'|trans}}</th>
@@ -19,6 +26,7 @@
         <tbody>
             {% for service in entities%}
             <tr>
+                <td>{{loop.index}}</td>
                 <td>{{service.title}}</td>
                 <td>{{service.region.name}}</td>
                 <td>

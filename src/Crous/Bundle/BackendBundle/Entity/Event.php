@@ -32,8 +32,7 @@ class Event implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="xml_id", type="string", length=64)
-     * @Assert\NotBlank(message="This value must not be empty.")
+     * @ORM\Column(name="xml_id", type="string", length=64, nullable=true)
      */
     private $xmlId;
 
@@ -63,6 +62,7 @@ class Event implements EntityInterface
      * @var string
      *
      * @ORM\Column(name="sharing_url", type="string", length=1024, nullable=true)
+     * @Assert\Url(message="This value is not a valid URL.")
      */
     private $sharingUrl;
     
@@ -93,6 +93,11 @@ class Event implements EntityInterface
      * @ORM\Column(name="categories", type="string", length=1024, nullable=true)
      */
     private $categories;
+    
+    /**
+     * @var string
+     */
+    public $file;
 
     /**
      * Get id

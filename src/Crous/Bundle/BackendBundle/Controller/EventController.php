@@ -9,11 +9,10 @@
 namespace Crous\Bundle\BackendBundle\Controller;
 
 use Crous\Bundle\BackendBundle\Controller\CRUDController as Controller;
-
 /**
- * HouseController
+ * EventController
  */
-class HouseController extends Controller
+class EventController extends Controller
 {
-    protected $_ctrKey = 'house';
+    protected $_ctrKey = 'event';
 }

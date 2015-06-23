@@ -1,49 +1,58 @@
 #Crous backend configuration
 crous_backend:
-    entities: 
+    models: 
         user: 
-            class: \Crous\Bundle\BackendBundle\Entity\User
+            entity_class: \Crous\Bundle\BackendBundle\Entity\User
+            manager_class: \Crous\Bundle\BackendBundle\Manager\UserManager
+            form:
+                class: ~
+                filter_class: ~
         role: 
-            class: \Crous\Bundle\BackendBundle\Entity\Role
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Role
+            manager_class: \Crous\Bundle\BackendBundle\Manager\RoleManager
+            form:
+                class: ~
+                filter_class: ~
         region: 
-            class: \Crous\Bundle\BackendBundle\Entity\Region
-        splash:
-            class: \Crous\Bundle\BackendBundle\Entity\Splash
-        house:
-            class: \Crous\Bundle\BackendBundle\Entity\House
-        service:
-            class: \Crous\Bundle\BackendBundle\Entity\Service
-        onlineService:
-            class: \Crous\Bundle\BackendBundle\Entity\OnlineService
-    managers: 
-        user: 
-            class: \Crous\Bundle\BackendBundle\Manager\UserManager
-        role: 
-            class: \Crous\Bundle\BackendBundle\Manager\RoleManager
-        region: 
-            class: \Crous\Bundle\BackendBundle\Manager\RegionManager
-        splash:
-            class: \Crous\Bundle\BackendBundle\Manager\SplashManager
-        house:
-            class: \Crous\Bundle\BackendBundle\Manager\HouseManager
-        service:
-            class: \Crous\Bundle\BackendBundle\Manager\ServiceManager
-        onlineService:
-            class: \Crous\Bundle\BackendBundle\Manager\OnlineServiceManager
-    forms: 
-        region: 
-            class: \Crous\Bundle\BackendBundle\Form\Type\RegionType
-            data_class: Crous\Bundle\BackendBundle\Entity\Region
-        splash:
-            class: \Crous\Bundle\BackendBundle\Form\Type\SplashType
-            data_class: Crous\Bundle\BackendBundle\Entity\Splash
-        house:
-            class: \Crous\Bundle\BackendBundle\Form\Type\HouseType
-            data_class: Crous\Bundle\BackendBundle\Entity\House
-        service:
-            class: \Crous\Bundle\BackendBundle\Form\Type\ServiceType
-            data_class: Crous\Bundle\BackendBundle\Entity\Service
-        onlineService:
-            class: \Crous\Bundle\BackendBundle\Form\Type\OnlineServiceType
-            data_class: Crous\Bundle\BackendBundle\Entity\OnlineService
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Region
+            manager_class: \Crous\Bundle\BackendBundle\Manager\RegionManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\RegionType
+                filter_class: ~
+        splash: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Splash
+            manager_class: \Crous\Bundle\BackendBundle\Manager\SplashManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\SplashType
+                filter_class: ~
+        house: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\House
+            manager_class: \Crous\Bundle\BackendBundle\Manager\HouseManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\HouseType
+                filter_class: \Crous\Bundle\BackendBundle\Form\Filter\HouseFilter
+        service: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Service
+            manager_class: \Crous\Bundle\BackendBundle\Manager\ServiceManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\ServiceType
+                filter_class: \Crous\Bundle\BackendBundle\Form\Filter\ServiceFilter
+        onlineService: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\OnlineService
+            manager_class: \Crous\Bundle\BackendBundle\Manager\OnlineServiceManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\OnlineServiceType
+                filter_class: \Crous\Bundle\BackendBundle\Form\Filter\OnlineServiceFilter
+        event: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Event
+            manager_class: \Crous\Bundle\BackendBundle\Manager\EventManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\EventType
+                filter_class: \Crous\Bundle\BackendBundle\Form\Filter\EventFilter
+        dtd: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Dtd
+            manager_class: \Crous\Bundle\BackendBundle\Manager\DtdManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\DtdType
+                filter_class: ~
         

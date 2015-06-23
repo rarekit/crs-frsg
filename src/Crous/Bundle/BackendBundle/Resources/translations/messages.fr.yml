@@ -4,12 +4,25 @@ House Management: Festion de la Chambre
 Service Management: Gestion des services
 Splash Management: Gestion Splash
 Online Service Management: Gestion des services en ligne
+Event Management: Culture Evénement
+DTD Management: La gestion DTD
 
 #Actions
 Add New: Ajouter
 Edit: Éditer
 Delete: Supprimer
 Action: Action
+Category: Catégorie
+Title: Title
+Image: Image
+Sharing Url: Sharing Url
+Sharing Short Url: Sharing Short Url
+Thumbnail Url: Thumbnail Url
+Date: Date
+Save: Sauvegarder
+Back: Dos
+Select a value: Sélectionner une valeur
+Select a region: Sélectionner une région
 
 #Fields
 Region Name: Nom de la région

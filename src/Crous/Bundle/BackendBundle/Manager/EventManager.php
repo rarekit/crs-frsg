@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the Crous package.
  *
@@ -7,19 +6,17 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
 namespace Crous\Bundle\BackendBundle\Manager;
 
 use Crous\Bundle\BackendBundle\Manager\Base\BaseManager;
 
 /**
- * HouseManager
+ * EventManager
  */
-class HouseManager extends BaseManager
+class EventManager extends BaseManager
 {
-
-    protected $_entityName = 'House';
-
+    protected $_entityName = 'Event';
+    
     /**
      * get house by criterias
      * 
@@ -31,9 +28,9 @@ class HouseManager extends BaseManager
      */
     public function findBy($criteria, $order, $limit = null, $offset = null)
     {
-        return $this->getRepository()->getHouses($this->_filter($criteria), $order, $limit, $offset);
+        return $this->getRepository()->getEvents($this->_filter($criteria), $order, $limit, $offset);
     }
-
+    
     /**
      * filter
      * 
@@ -42,7 +39,7 @@ class HouseManager extends BaseManager
      */
     protected function _filter($criteria)
     {
-        $acceptedKeys = array('keyword' => null, 'region' => null);
+        $acceptedKeys = array('keyword' => null);
         $criterias = array_intersect_key($criteria, $acceptedKeys);
         foreach ($criterias as $key => $value) {
             if (empty($value)) {
@@ -51,4 +48,5 @@ class HouseManager extends BaseManager
         }
         return $criteria;
     }
+    
 }

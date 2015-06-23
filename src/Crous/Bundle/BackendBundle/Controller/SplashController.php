@@ -10,10 +10,12 @@
 
 namespace Crous\Bundle\BackendBundle\Controller;
 
+use Crous\Bundle\BackendBundle\Controller\CRUDController as Controller;
+
 /**
  * SplashController
  */
-class SplashController extends BaseController
+class SplashController extends Controller
 {
     protected $_ctrKey = 'splash';
 }

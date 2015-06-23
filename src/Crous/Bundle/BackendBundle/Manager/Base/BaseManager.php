@@ -24,8 +24,11 @@ class BaseManager implements ManagerInterface {
     /**
      * @param \Doctrine\ORM\EntityManager $manager
      */
-    public function __construct(EntityManager $manager) {
+    public function __construct(EntityManager $manager, $entityName = null) {
         $this->_entityManager = $manager;
+        if (is_null($this->_entityName)) {
+            $this->_entityName = $entityName;
+        }
     }
 
     /* (non-PHPdoc)
@@ -92,7 +95,18 @@ class BaseManager implements ManagerInterface {
      */
     public function countBy($criteria = array())
     {
-        return $this->getRepository()->countBy($criteria);
+        return $this->getRepository()->countBy($this->_filter($criteria));
+    }
+    
+    /**
+     * filters
+     * 
+     * @param array $criteria
+     * @return array
+     */
+    protected function _filter($criteria)
+    {
+        return $criteria;
     }
 
 }

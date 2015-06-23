@@ -4,11 +4,11 @@ services:
         arguments: ["%shorturl_api_key%", "%shorturl_api_url%"]
     entity_factory:
         class: Crous\Bundle\BackendBundle\Service\EntityFactory
-        arguments: [@service_container, "%crous_backend.entities%"]
+        arguments: [@service_container, "%crous_backend.data%"]
     form_factory:
         class: Crous\Bundle\BackendBundle\Service\FormFactory
-        arguments: [@service_container, "%crous_backend.forms%"]
+        arguments: [@service_container, "%crous_backend.data%"]
     manager_factory:
         class: Crous\Bundle\BackendBundle\Service\ManagerFactory
-        arguments: [@service_container, "%crous_backend.managers%"]
+        arguments: [@service_container, "%crous_backend.data%"]
     

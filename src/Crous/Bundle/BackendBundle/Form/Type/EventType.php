@@ -14,13 +14,13 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Crous\Bundle\BackendBundle\Form\Event\OnlineServiceSubscriber;
+use Crous\Bundle\BackendBundle\Form\Event\EventSubscriber;
 
 /**
- * OnlineServiceType
+ * EventType
  *
  */
-class OnlineServiceType extends AbstractType
+class EventType extends AbstractType
 {
 
     /**
@@ -47,52 +47,68 @@ class OnlineServiceType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('region', null, array(
-            'label' => 'Region',
-            'property' => 'name',
-            'empty_value' => "Select a region",
-            'attr' => array(
-                'class' => 'form-control',
-                'placeholder' => 'Region',
-            ),
-            'required' => true
-        ))->add('title', null, array(
+        $builder->add('title', null, array(
             'label' => 'Title',
             'attr' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Title'
             ),
             'required' => true
-        ))->add('shortDesc', null, array(
-            'label' => 'Short Description',
+        ))->add('eventDate', null, array(
+            'label' => 'Date',
             'attr' => array(
                 'class' => 'form-control',
-                'placeholder' => 'Short Description',
+                'placeholder' => 'dd/mm/yyyy'
+            ),
+            'widget' => 'single_text',
+            'format' => 'dd/MM/yyyy',
+            'required' => true
+        ))->add('text', 'textarea', array(
+            'label' => 'Text',
+            'attr' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Text',
             ),
             'required' => false
-        ))->add('link', null, array(
-            'label' => 'Link',
+        ))->add('categories', null, array(
+            'label' => 'Category',
             'attr' => array(
                 'class' => 'form-control',
-                'placeholder' => 'Link',
+                'placeholder' => 'Category',
             ),
             'required' => false
         ))->add('file', 'image', array(
-                'label' => 'Image',
-                'attr' => array(
-                    'placeholder' => 'Image',
-                ),
-                'required' => false
+            'label' => 'Image',
+            'attr' => array(
+                'placeholder' => 'Image',
+            ),
+            'required' => false
+        ))->add('sharingUrl', 'text', array(
+            'label' => 'Sharing Url',
+            'attr' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Sharing Url',
+            ),
+            'required' => false
+        ))->add('sharingShortUrl', 'text', array(
+            'label' => 'Sharing Short Url',
+            'attr' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Sharing Short Url',
+                'readonly' => 'readonly'
+            ),
+            'required' => false
         ))
         ;
 
-        $builder->addEventSubscriber(new OnlineServiceSubscriber($this->_container));
+        $builder->addEventSubscriber(new EventSubscriber($this->_container));
     }
 
     /*
      * (non-PHPdoc)
      * @see \Symfony\Component\Form\AbstractType::setDefaultOptions()
      */
+
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
@@ -107,7 +123,7 @@ class OnlineServiceType extends AbstractType
 
     public function getName()
     {
-        return 'onlineservice';
+        return 'event';
     }
 
 }

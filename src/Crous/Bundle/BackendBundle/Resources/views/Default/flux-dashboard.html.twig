@@ -19,6 +19,12 @@
         <li {%if route in ['crous_backend_onlineservice_list', 'crous_backend_onlineservice_add'] %}class="active"{%endif%}>
             <a href="{{path('crous_backend_onlineservice_list')}}">{{'Online Service Management'|trans}}</a>
         </li>
+        <li {%if route in ['crous_backend_event_list', 'crous_backend_event_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_event_list')}}">{{'Event Management'|trans}}</a>
+        </li>
+        <li {%if route in ['crous_backend_dtd_list', 'crous_backend_dtd_add'] %}class="active"{%endif%}>
+            <a href="{{path('crous_backend_dtd_list')}}">{{'DTD Management'|trans}}</a>
+        </li>
     </ul>
 </div>
 {% endblock %}

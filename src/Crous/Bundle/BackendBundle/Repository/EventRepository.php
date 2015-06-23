@@ -10,4 +10,61 @@ namespace Crous\Bundle\BackendBundle\Repository;
  */
 class EventRepository extends BaseRepository
 {
+    /**
+     * Get houses
+     * 
+     * @param array   $criteria
+     * @param array   $order
+     * @param integer $limit
+     * @param integer $offset
+     */
+    public function getEvents($criteria, $order = array(), $limit = null, $offset = null)
+    {
+        $qb = $this->createQueryBuilder('o');
+        if (!empty($criteria)) {
+            foreach ($criteria as $key => $value) {
+                $stm = isset($stm) ? 'andWhere' : 'where';
+                if ('keyword' === $key) {
+                    $qb->add($stm, $qb->expr()->orX(
+                        $qb->expr()->like('o.title', '?1'),
+                        $qb->expr()->like('o.text', '?1')
+                    ))->setParameters(array(1 => "%$value%"));
+                } 
+            }
+        }
+        //Ordering
+        if (!empty($order)) {
+            foreach ($order as $key => $value) {
+                $qb->addOrderBy("o.$key", $value);
+            }
+        }
+        //Limit
+        $qb->setFirstResult($offset)->setMaxResults($limit);
+        
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * get total of records by criterias
+     * 
+     * @param type $criteria
+     * @return type
+     */
+    public function countBy($criteria = array())
+    {
+        $qb = $this->createQueryBuilder('o');
+        $qb->select('count(o.id)');
+        if (!empty($criteria)) {
+            foreach ($criteria as $key => $value) {
+                $stm = isset($stm) ? 'andWhere' : 'where';
+                if ('keyword' === $key) {
+                    $qb->add($stm, $qb->expr()->orX(
+                        $qb->expr()->like('o.title', '?1'),
+                        $qb->expr()->like('o.text', '?1')
+                    ))->setParameters(array(1 => "%$value%"));
+                } 
+            }
+        }
+        return $qb->getQuery()->getSingleScalarResult();
+    }
 }

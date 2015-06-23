@@ -15,4 +15,6 @@ parameters:
     item_per_page: 10
     shorturl_api_url: https://www.googleapis.com/urlshortener/v1/url
     shorturl_api_key: AIzaSyDn5S_QvCw8ixpq2zCU1tcMkDnirldVjTs
+    #sync_period only accepted MIN, PM or AM
+    sync_period: ['15MIN','30MIN','12PM']
 

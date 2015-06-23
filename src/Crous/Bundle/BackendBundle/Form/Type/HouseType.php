@@ -50,7 +50,7 @@ class HouseType extends AbstractType
         $builder->add('region', null, array(
             'label' => 'Region',
             'property' => 'name',
-            'empty_value' => "Choose a region",
+            'empty_value' => "Select a region",
             'attr' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Region',

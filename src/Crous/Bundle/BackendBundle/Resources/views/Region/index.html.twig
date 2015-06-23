@@ -11,6 +11,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th width="1%">{{'#'|trans}}</th>
                 <th>{{'Region Name'|trans}}</th>
                 <th>{{'Code'|trans}}</th>
                 <th width="20%">{{'Action'|trans}}</th>
@@ -19,6 +20,7 @@
         <tbody>
             {% for region in entities%}
             <tr>
+                <td>{{lopp.index}}</td>
                 <td>{{region.name}}</td>
                 <td>{{region.code}}</td>
                 <td>

@@ -16,9 +16,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * DTD
  *
  * @ORM\Table("dtd")
- * @ORM\Entity(repositoryClass="Crous\Bundle\BackendBundle\Repository\DTDRepository")
+ * @ORM\Entity(repositoryClass="Crous\Bundle\BackendBundle\Repository\DtdRepository")
  */
-class DTD implements EntityInterface
+class Dtd implements EntityInterface
 {
     /**
      * @var integer
@@ -33,6 +33,7 @@ class DTD implements EntityInterface
      * @var string
      *
      * @ORM\Column(name="xml_id", type="string", length=255)
+     * @Assert\Url(message="This value is not a valid URL.")
      * @Assert\NotBlank(message="This value must not be empty.")
      */
     private $dtd;
@@ -48,10 +49,18 @@ class DTD implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="sync_period", type="string",  length=64)
+     * @ORM\Column(name="sync_period", type="string", length=64)
      * @Assert\NotBlank(message="This value must not be empty.")
      */
     private $syncPeriod;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="filename", type="string",  length=128)
+     * @Assert\NotBlank(message="This value must not be empty.")
+     */
+    private $filename;
 
     /**
      * Get id
@@ -130,5 +139,28 @@ class DTD implements EntityInterface
     public function getSyncPeriod()
     {
         return $this->syncPeriod;
+    }
+
+    /**
+     * Set filename
+     *
+     * @param string $filename
+     * @return DTD
+     */
+    public function setFilename($filename)
+    {
+        $this->filename = $filename;
+
+        return $this;
+    }
+
+    /**
+     * Get filename
+     *
+     * @return string 
+     */
+    public function getFilename()
+    {
+        return $this->filename;
     }
 }

@@ -91,12 +91,12 @@
         {% endif %}
         {{ form_widget(form) }}
     </div>
-    <div class="form-group">
-        <label class="control-label">{{ 'Thumbnail Url'|trans }}: </label><br>
-        {% if thumbnail_url is defined and thumbnail_url is not null %}
+    {% if thumbnail_url is defined and thumbnail_url is not null %}
+        <div class="form-group">
+            <label class="control-label">{{ 'Thumbnail Url'|trans }}: </label><br>
             <a target="_blank" href="{{ asset(thumbnail_url) }}">{{ app.request.getSchemeAndHttpHost() ~ asset(thumbnail_url) }}</a>
-        {% endif %}
-    </div>
+        </div>
+    {% endif %}
     {% endspaceless %}
 {% endblock file_widget %}
 

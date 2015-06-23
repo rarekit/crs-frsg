@@ -36,3 +36,11 @@ crous_backend_onlineservice:
     resource: "@CrousBackendBundle/Resources/config/routing/onlineservice.yml"
     prefix:   /onlineservice
     
+crous_backend_event:
+    resource: "@CrousBackendBundle/Resources/config/routing/event.yml"
+    prefix:   /event
+    
+crous_backend_dtd:
+    resource: "@CrousBackendBundle/Resources/config/routing/dtd.yml"
+    prefix:   /dtd
+    

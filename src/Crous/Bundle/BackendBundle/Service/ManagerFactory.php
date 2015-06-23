@@ -9,6 +9,7 @@
 namespace Crous\Bundle\BackendBundle\Service;
 
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Crous\Bundle\BackendBundle\Manager\Base\BaseManager;
 
 /**
  * ManagerFactory
@@ -16,18 +17,18 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class ManagerFactory {
 
     protected $_container;
-    protected $_managers;
+    protected $_data;
 
     /**
      * Constructor
      * 
      * @param ContainerInterface $container
-     * @param array $managers
+     * @param array $data
      */
-    public function __construct(ContainerInterface $container, $managers)
+    public function __construct(ContainerInterface $container, $data)
     {
         $this->_container = $container;   
-        $this->_managers = $managers;
+        $this->_data = $data;
     }
 
     /**
@@ -40,9 +41,13 @@ class ManagerFactory {
     public function create($name)
     {
         $manager = null;
-        if (isset($this->_managers[$name])) {
+        if (isset($this->_data[$name])) {
             $doctrineMgr = $this->_container->get('doctrine')->getManager();
-            $manager = new $this->_managers[$name]['class']($doctrineMgr);
+            if (isset($this->_data[$name]['manager_class'])) {
+                $manager = new $this->_data[$name]['manager_class']($doctrineMgr);
+            } else {
+                $manager = new BaseManager($doctrineMgr, ucfirst($name));
+            }
         } 
         
         return $manager;

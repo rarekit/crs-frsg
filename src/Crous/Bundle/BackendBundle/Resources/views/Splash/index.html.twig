@@ -11,6 +11,7 @@
     <table class="table table-bordered">
         <thead>
             <tr>
+                <th width="1%">{{'#'|trans}}</th>
                 <th>{{'Region'|trans}}</th>
                 <th>{{'Content'|trans}}</th>
                 <th width="20%">{{'Action'|trans}}</th>
@@ -19,6 +20,7 @@
         <tbody>
             {% for splash in entities%}
             <tr>
+                <td>{{lopp.index}}</td>
                 <td>{{splash.region.name}}</td>
                 <td>{{splash.content}}</td>
                 <td>
