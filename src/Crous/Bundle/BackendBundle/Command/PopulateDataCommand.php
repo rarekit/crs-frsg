@@ -148,12 +148,11 @@ class PopulateDataCommand extends ContainerAwareCommand
             foreach ($nodes as $node) {
                 $region = $this->getContainer()->get('entity_factory')->create('region');
                 $childNodes = $node->getElementsByTagName("column");
-                foreach($childNodes as $item) {
-                    $attr = $item->attributes[0]->nodeValue;
-                    if ($attr == "departement_code") {
+                foreach($childNodes as $key => $item) {
+                    if ($key == 1) {
                         $region->setCode($item->nodeValue);
                     }
-                    if ($attr == "departement_nom") {
+                    if ($key == 2) {
                         $region->setName($item->nodeValue)
                                 ->setEmail(strtolower($item->nodeValue) . "@crous.com");
                     }
