@@ -16,6 +16,11 @@ class PopulateDataCommand extends ContainerAwareCommand
     {
         $this->setName('crous:populate:data')
                 ->setDescription('Populating data')
+                ->addArgument(
+                    'name',
+                    InputArgument::OPTIONAL,
+                    'Who do you want to greet?'
+                )
         ;
     }
 
@@ -23,14 +28,26 @@ class PopulateDataCommand extends ContainerAwareCommand
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
 
-//        if ($this->populateRole($em)) {
-//            $output->writeln("<fg=green>Populating role data successful!</fg=green>");
-//        }
-//
-//        if ($this->populateUser($em)) {
-//            $output->writeln("<fg=green>Populating user data successful!</fg=green>");
-//        }
-        $this->populateRegion($em);
+        $name = $input->getArgument('name');
+        switch ($name) {
+            case 'all':
+                if ($this->populateRole($em)) {
+                    $output->writeln("<fg=green>Populating role data successful!</fg=green>");
+                }
+                if ($this->populateUser($em)) {
+                    $output->writeln("<fg=green>Populating user data successful!</fg=green>");
+                }
+                if ($this->populateRegion($em)) {
+                    $output->writeln("<fg=green>Populating region data successful!</fg=green>");
+                }
+                break;
+            case 'region':
+                if ($this->populateRegion($em)) {
+                    $output->writeln("<fg=green>Populating region data successful!</fg=green>");
+                }
+                break;
+            
+        }
     }
 
     protected function truncate($em, $clsName)
@@ -131,13 +148,22 @@ class PopulateDataCommand extends ContainerAwareCommand
             foreach ($nodes as $node) {
                 $region = $this->getContainer()->get('entity_factory')->create('region');
                 $childNodes = $node->getElementsByTagName("column");
-                $region->setName($childNodes[2]->nodeValue)
-                        ->setCode($childNodes[1]->nodeValue)
-                        ->setEmail(strtolower($childNodes[2]->nodeValue) . "@crous.com")
-                        ->setActive(true);
+                foreach($childNodes as $item) {
+                    $attr = $item->attributes[0]->nodeValue;
+                    if ($attr == "departement_code") {
+                        $region->setCode($item->nodeValue);
+                    }
+                    if ($attr == "departement_nom") {
+                        $region->setName($item->nodeValue)
+                                ->setEmail(strtolower($item->nodeValue) . "@crous.com");
+                    }
+                }
+                $region->setActive(true);
                 $manager->save($region);
             }
+            return true;
         }
+        return false;
     }
 
 }
