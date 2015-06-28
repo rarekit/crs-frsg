@@ -1,0 +1,11 @@
+crous_backend_assistance_list:
+    path:     /
+    defaults: { _controller: CrousBackendBundle:Assistance:index }
+
+crous_backend_assistance_add:
+    path:     /add/{id}
+    defaults: { _controller: CrousBackendBundle:Assistance:add, id:null }
+    
+crous_backend_assistance_delete:
+    path:     /delete/{id}
+    defaults: { _controller: CrousBackendBundle:Assistance:delete}

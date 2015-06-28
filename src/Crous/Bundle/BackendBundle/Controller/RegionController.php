@@ -47,7 +47,7 @@ class RegionController extends Controller
                     ->create($this->_ctrKey)
                     ->save($entity);
             if ($result) {
-                $this->addMessage('success', 'The object was updated');
+                $this->addMessage('success', 'The region was updated');
             } else {
                 $this->addMessage('error', 'Error occurred while updating');
             }

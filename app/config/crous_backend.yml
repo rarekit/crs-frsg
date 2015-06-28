@@ -55,4 +55,16 @@ crous_backend:
             form:
                 class: \Crous\Bundle\BackendBundle\Form\Type\DtdType
                 filter_class: ~
+        scholarship: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Scholarship
+            manager_class: \Crous\Bundle\BackendBundle\Manager\ScholarshipManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\ScholarshipType
+                filter_class: \Crous\Bundle\BackendBundle\Form\Filter\ScholarshipFilter
+        assistance: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Assistance
+            manager_class: \Crous\Bundle\BackendBundle\Manager\AssistanceManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\AssistanceType
+                filter_class: \Crous\Bundle\BackendBundle\Form\Filter\AssistanceFilter
         

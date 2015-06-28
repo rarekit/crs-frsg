@@ -6,6 +6,7 @@
     <div class="inner">
         <div class="row">
             <div class="col-xs-12">
+                {% include 'CrousBackendBundle:Block:messages.html.twig' %}
                 <h2 class="title-lg">Liste des flux XML</h2>
                 <div class="wrap-link text-right"><a href="index.html" title="Ajoter un flux" class="link"><span class="icon icon-plus"></span><span>Ajoter un flux</span></a><a href="index.html" title="Synchroniser tous les flux" class="link"><span class="icon icon-refresh"></span><span>Synchroniser tous les flux</span></a>
                 </div>
@@ -58,6 +59,16 @@
                                 <td class="text-right"><a href="{{path('crous_backend_dtd_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
                                 </td>
                             </tr>
+                            <tr class="even">         
+                                <td>{{'Scholarship Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_scholarship_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
+                            <tr class="odd">         
+                                <td>{{'Assistance Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_scholarship_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -75,9 +86,9 @@
                                     </td>
                                     <td width="5%" class="text-right">
                                         {% if region.active == true%}
-                                            <a href="{{path('crous_backend_region_active', {id:region.id})}}" title="{{'Deactive'|trans}}" class="link"><span class="text">{{'Active'|trans}}</span></a>
+                                            <a href="{{path('crous_backend_region_active', {id:region.id, token:token})}}" title="{{'Active'|trans}}" class="link"><span class="text">{{'Active'|trans}}</span></a>
                                         {% else%}
-                                            <a href="{{path('crous_backend_region_active', {id:region.id, type:1})}}" title="{{'Active'|trans}}" class="link"><span class="text">{{'Active'|trans}}</span></a>
+                                            <a href="{{path('crous_backend_region_active', {id:region.id, type:1, token:token})}}" title="{{'Deactive'|trans}}" class="link"><span class="text">{{'Deactive'|trans}}</span></a>
                                         {% endif%}
                                     </td>
                                     <td width="5%" class="text-right">

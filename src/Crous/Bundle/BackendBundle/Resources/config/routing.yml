@@ -44,3 +44,10 @@ crous_backend_dtd:
     resource: "@CrousBackendBundle/Resources/config/routing/dtd.yml"
     prefix:   /dtd
     
+crous_backend_scholarship:
+    resource: "@CrousBackendBundle/Resources/config/routing/scholarship.yml"
+    prefix:   /scholarship
+    
+crous_backend_assistance:
+    resource: "@CrousBackendBundle/Resources/config/routing/assistance.yml"
+    prefix:   /assistance
