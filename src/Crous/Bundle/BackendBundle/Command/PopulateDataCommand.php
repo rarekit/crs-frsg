@@ -1,4 +1,5 @@
 <?php
+
 namespace Crous\Bundle\BackendBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
@@ -6,7 +7,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-
+use Symfony\Component\DomCrawler\Crawler;
 
 class PopulateDataCommand extends ContainerAwareCommand
 {
@@ -14,22 +15,22 @@ class PopulateDataCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this->setName('crous:populate:data')
-            ->setDescription('Populating data')
-            ;
+                ->setDescription('Populating data')
+        ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $em = $this->getContainer()->get('doctrine')->getManager();
-        
-        if ($this->populateRole($em)) {
-            $output->writeln("<fg=green>Populating role data successful!</fg=green>");       
-        }
 
-        if ($this->populateUser($em)) {
-            $output->writeln("<fg=green>Populating user data successful!</fg=green>");       
-        }
-
+//        if ($this->populateRole($em)) {
+//            $output->writeln("<fg=green>Populating role data successful!</fg=green>");
+//        }
+//
+//        if ($this->populateUser($em)) {
+//            $output->writeln("<fg=green>Populating user data successful!</fg=green>");
+//        }
+        $this->populateRegion($em);
     }
 
     protected function truncate($em, $clsName)
@@ -46,8 +47,7 @@ class PopulateDataCommand extends ContainerAwareCommand
             $connection->query('SET FOREIGN_KEY_CHECKS=1');
             $connection->commit();
             return true;
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $connection->rollback();
         }
 
@@ -67,22 +67,22 @@ class PopulateDataCommand extends ContainerAwareCommand
                 /* @var $user \Crous\Bundle\BackendBundle\Entity\User */
                 $user = $this->getContainer()->get('entity_factory')->create('user');
                 $user->setUsername($item[0])
-                    ->setPassword($item[1])
-                    ->setFirstname($item[2])
-                    ->setLastname($item[3])
-                    ->setEmail($item[5])
-                    ->setActive(true)
-                    ;
+                        ->setPassword($item[1])
+                        ->setFirstname($item[2])
+                        ->setLastname($item[3])
+                        ->setEmail($item[5])
+                        ->setActive(true)
+                ;
 
-                $role = $roleManager->getRepository()->findOneBy(array('role'=>$item[4]));
+                $role = $roleManager->getRepository()->findOneBy(array('role' => $item[4]));
                 if ($role != null && $role instanceof \Crous\Bundle\BackendBundle\Entity\Role) {
-                    $user->setRole($role);            
+                    $user->setRole($role);
                 }
 
                 //Encrypt password
                 $factory = $this->getContainer()->get('security.encoder_factory');
-                $encoder = $factory->getEncoder($user);        
-                $password = $encoder->encodePassword($user->getPassword(), '');  
+                $encoder = $factory->getEncoder($user);
+                $password = $encoder->encodePassword($user->getPassword(), '');
 
                 $user->setPassword($password);
                 $userManager->save($user);
@@ -106,14 +106,38 @@ class PopulateDataCommand extends ContainerAwareCommand
                 /* @var $role \Crous\Bundle\BackendBundle\Entity\Role */
                 $role = $this->getContainer()->get('entity_factory')->create('role');
                 $role->setName($item[0])
-                    ->setRole($item[1])
-                    ->setType(1)
-                    ->setActive(true)
-                    ;
+                        ->setRole($item[1])
+                        ->setType(1)
+                        ->setActive(true)
+                ;
                 $roleManager->save($role);
             }
             return true;
         }
         return false;
     }
+
+    protected function populateRegion($em)
+    {
+        if ($this->truncate($em, 'Crous\Bundle\BackendBundle\Entity\Region')) {
+            $regionFile = $this->getContainer()->get('kernel')->getRootDir() . '/../data/region.xml';
+            $document = new \DOMDocument();
+            $document->load($regionFile);
+
+            $crawler = new Crawler();
+            $crawler->addDocument($document);
+            $nodes = $crawler->filter('database > table');
+            $manager = $this->getContainer()->get('manager_factory')->create('region');
+            foreach ($nodes as $node) {
+                $region = $this->getContainer()->get('entity_factory')->create('region');
+                $childNodes = $node->getElementsByTagName("column");
+                $region->setName($childNodes[2]->nodeValue)
+                        ->setCode($childNodes[1]->nodeValue)
+                        ->setEmail(strtolower($childNodes[2]->nodeValue) . "@crous.com")
+                        ->setActive(true);
+                $manager->save($region);
+            }
+        }
+    }
+
 }

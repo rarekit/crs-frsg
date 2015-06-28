@@ -9,3 +9,7 @@ crous_backend_region_add:
 crous_backend_region_delete:
     path:     /delete/{id}
     defaults: { _controller: CrousBackendBundle:Region:delete}
+    
+crous_backend_region_active:
+    path:     /active/{id}/{type}
+    defaults: { _controller: CrousBackendBundle:Region:active, type:0} 

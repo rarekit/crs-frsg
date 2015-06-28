@@ -1,30 +1,94 @@
 {% extends 'CrousBackendBundle::layout.html.twig' %} 
+{%block homecls%}class="blue-theme"{%endblock%}
 
 {% block body %}
-{% set route = app.request.attributes.get('_route')%}
-<div class="navbar-tab">
-    <ul class="nav nav-tabs">
-        <li {%if route in ['crous_backend_region_list', 'crous_backend_region_add'] %}class="active"{%endif%}>
-            <a href="{{path('crous_backend_region_list')}}">{{'Region Management'|trans}}</a>
-        </li>
-        <li {%if route in ['crous_backend_splash_list', 'crous_backend_splash_add'] %}class="active"{%endif%}>
-            <a href="{{path('crous_backend_splash_list')}}">{{'Splash Management'|trans}}</a>
-        </li>
-        <li {%if route in ['crous_backend_house_list', 'crous_backend_house_add'] %}class="active"{%endif%}>
-            <a href="{{path('crous_backend_house_list')}}">{{'House Management'|trans}}</a>
-        </li>
-        <li {%if route in ['crous_backend_service_list', 'crous_backend_service_add'] %}class="active"{%endif%}>
-            <a href="{{path('crous_backend_service_list')}}">{{'Service Management'|trans}}</a>
-        </li>
-        <li {%if route in ['crous_backend_onlineservice_list', 'crous_backend_onlineservice_add'] %}class="active"{%endif%}>
-            <a href="{{path('crous_backend_onlineservice_list')}}">{{'Online Service Management'|trans}}</a>
-        </li>
-        <li {%if route in ['crous_backend_event_list', 'crous_backend_event_add'] %}class="active"{%endif%}>
-            <a href="{{path('crous_backend_event_list')}}">{{'Event Management'|trans}}</a>
-        </li>
-        <li {%if route in ['crous_backend_dtd_list', 'crous_backend_dtd_add'] %}class="active"{%endif%}>
-            <a href="{{path('crous_backend_dtd_list')}}">{{'DTD Management'|trans}}</a>
-        </li>
-    </ul>
-</div>
+    {% set route = app.request.attributes.get('_route')%}
+    <div class="inner">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="title-lg">Liste des flux XML</h2>
+                <div class="wrap-link text-right"><a href="index.html" title="Ajoter un flux" class="link"><span class="icon icon-plus"></span><span>Ajoter un flux</span></a><a href="index.html" title="Synchroniser tous les flux" class="link"><span class="icon icon-refresh"></span><span>Synchroniser tous les flux</span></a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed style-1">   
+                        <tbody>
+                            <tr class="odd">         
+                                <td>{{'News Management'|trans}}</td>
+                                <td class="text-right">
+                                    <a href="index.html" title="Edit" class="link"><span class="icon icon-edit">      </span></a>
+                                </td>
+                            </tr>
+                            <tr class="even">         
+                                <td>{{'Menu Management'|trans}}</td>
+                                <td class="text-right"><a href="index.html" title="Edit" class="link"><span class="icon icon-edit">       </span></a>
+                                </td>
+                            </tr>
+                            <tr class="odd">         
+                                <td>{{'Service Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_service_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
+                            <tr class="even">         
+                                <td>{{'Online Service Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_onlineservice_list')}}" title="Edit" class="link"><span class="icon icon-edit">       </span></a>
+                                </td>
+                            </tr>
+                            <tr class="odd">         
+                                <td>{{'Splash Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_splash_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
+                            <tr class="even">         
+                                <td>{{'House Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_house_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
+                            <tr class="odd">         
+                                <td>{{'Region Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_region_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
+                            <tr class="even">         
+                                <td>{{'Event Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_event_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
+                            <tr class="odd">         
+                                <td>{{'DTD Management'|trans}}</td>
+                                <td class="text-right"><a href="{{path('crous_backend_dtd_list')}}" title="Edit" class="link"><span class="icon icon-edit"> </span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-condensed table-responsive style-2">   
+                        <tbody>
+                            {% for region in regions%}
+                                <tr>       
+                                    <td> <span class="icon icon-folder"></span><span class="text">{{region.name}}</span></td>
+                                    <td width="30%" class="text-right">
+                                        <a href="mailto:{{region.email}}" title="{{region.email}}" class="link" target="_blank"><span class="text">{{region.email}}</span></a>
+                                    </td>
+                                    <td width="5%" class="text-right">
+                                        <a href="{{path('crous_backend_region_add', {id: region.id})}}" title="{{'Edit'|trans}}" class="link"><span class="icon icon-edit"> </span></a>
+                                    </td>
+                                    <td width="5%" class="text-right">
+                                        {% if region.active == true%}
+                                            <a href="{{path('crous_backend_region_active', {id:region.id})}}" title="{{'Deactive'|trans}}" class="link"><span class="text">{{'Active'|trans}}</span></a>
+                                        {% else%}
+                                            <a href="{{path('crous_backend_region_active', {id:region.id, type:1})}}" title="{{'Active'|trans}}" class="link"><span class="text">{{'Active'|trans}}</span></a>
+                                        {% endif%}
+                                    </td>
+                                    <td width="5%" class="text-right">
+                                        <a href="index.html" title="Refresh" class="link"><span class="icon icon-refresh"> </span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

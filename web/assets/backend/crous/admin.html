@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html lang="en" class="no-js ie ie8"><![endif]-->
+<!--[if IE 9]><html lang="en" class="no-js ie ie9"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="en" class="no-js">
+  <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><![endif]-->
+    <title>Cnous Crous - Admin</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/libs.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!--[if lte IE 9]><link rel="stylesheet" href="css/ie.css"><![endif]-->
+    <link rel="stylesheet" href="css/print.css" media="print">
+    <script src="js/modernizr.js"></script>
+  </head>
+  <body class="blue-theme">
+    <header>
+      <section class="container">
+        <div class="top"><a href="index.html" title="Logo" class="link logo"><img src="images/logo.png" alt="Crous"/></a><a class="btn-deconnect"><span>Déconnextion</span></a>
+        </div>
+        <nav class="navbar">
+          <div class="navbar-header">
+            <button type="button" data-toggle="collapse" data-target="#navbar-main" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span>            <span class="icon-bar"></span>            <span class="icon-bar"></span>            <span class="icon-bar"></span></button>          
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling-->
+          <div id="navbar-main" aria-expanded="false" style="height: 1px;" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="ACCUEIL.html" title=" ACCUEIL" class="link"><span class="text"> ACCUEIL</span></a>
+              </li>
+              <li><a href="GESTION DES FLUX.html" title="GESTION DES FLUX" class="link"><span class="text">GESTION DES FLUX</span></a>
+              </li>
+              <li><a href="NOTIFICATIONS PUSH.html" title="NOTIFICATIONS PUSH" class="link"><span class="text">NOTIFICATIONS PUSH</span></a>
+              </li>
+              <li><a href="statistiques.html" title="statistiques" class="link"><span class="text">statistiques</span></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </section>
+    </header>
+    <main>
+      <section class="container">
+        <div class="inner full">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4">
+              <div class="col-left">
+                <div class="navbar-tab">
+                  <ul id="myTab" role="tablist" class="nav nav-tabs">
+                    <li role="presentation" class="active"><a id="tab-1" href="#tab1" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">utilisateur 1</a></li>
+                    <li role="presentation"><a id="tab-2" href="#tab2" role="tab" data-toggle="tab" aria-controls="profile">utilisateur 2</a></li>
+                    <li role="presentation"><a id="tab-3" href="#tab3" role="tab" data-toggle="tab" aria-controls="profile">utilisateur 3</a></li>
+                    <li role="presentation"><a id="tab-4" href="#tab4" role="tab" data-toggle="tab" aria-controls="profile">utilisateur 4</a></li>
+                  </ul>
+                </div>
+                <nav class="pager-block">
+                  <ul class="pager">
+                    <li><a href="prev.html" title="Previous" class="link prev">Previous</a>
+                    </li>
+                    <li><a href="next.html" title="Next" class="link next">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-8">
+              <div class="col-right">
+                <div class="row">
+                  <div class="navbar-tab-content">
+                    <div id="myTabContent" class="tab-content">
+                      <div id="tab1" role="tabpanel" aria-labelledby="tab-1" class="tab-pane fade in active">
+                        <div class="wrap-btn style-1"><a href="index.html" title="création" class="link btn btn-default"><span class="text">création</span></a><a href="index.html" title="modification" class="link btn btn-default"><span class="text">modification</span></a><a href="index.html" title="suppression" class="link btn btn-default"><span class="text">suppression</span></a>
+                        </div>
+                        <div class="content">
+                          <form action="" method="GET" class="info-form">
+                            <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group panel-form list-style">
+                              <div class="panel">
+                                <div id="headingOne" role="tab" class="panel-heading">
+                                  <h4 id="item1" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">Utilisateur</a></h4>
+                                  <input name="utilisateur" id="utilisateur">
+                                </div>
+                              </div>
+                              <div class="panel">
+                                <div id="headingTwo" role="tab" class="panel-heading">
+                                  <h4 id="item2" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">Mot de Passe</a></h4>
+                                  <input name="pass" id="pass">
+                                </div>
+                              </div>
+                              <div class="panel">
+                                <div id="headingThree" role="tab" class="panel-heading active">
+                                  <h4 id="item3" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">Nom</a></h4>
+                                  <input name="first-name" id="first-name">
+                                </div>
+                              </div>
+                              <div class="panel">
+                                <div id="headingFour" role="tab" class="panel-heading">
+                                  <h4 id="item4" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="collapsed">Prénom</a></h4>
+                                  <input name="last-name" id="last-name">
+                                </div>
+                              </div>
+                              <div class="panel">
+                                <div id="headingFive" role="tab" class="panel-heading">
+                                  <h4 id="item5" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="collapsed">Email</a></h4>
+                                  <input name="email" id="email">
+                                </div>
+                              </div>
+                              <div class="panel">
+                                <div id="headingSix" role="tab" class="panel-heading">
+                                  <h4 id="item6" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" class="collapsed">Actif</a></h4>
+                                  <input name="actif" id="actif">
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                      <div id="tab2" role="tabpanel" aria-labelledby="tab-2" class="tab-pane fade">
+                        <div class="content style-1">
+                          <p>Food truck fixie locavore, accusamus mcsweeney&apos;s marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.     </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="wrap-btn text-center">
+                    <button type="button" id="valider" name="valider" class="btn btn-default">Valider</button>
+                    <button type="button" id="abandonner" name="abandonner" class="btn btn-default">Abandonner</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <section class="container">
+        <nav>
+          <ul>
+            <li class="active"><a href=" Accueil.html" title=" Accueil" class="link"><span class="text"> Accueil</span></a>
+            </li>
+            <li><a href=" Gestion des Flux.html" title=" Gestion des Flux" class="link"><span class="text"> Gestion des Flux</span></a>
+            </li>
+            <li><a href=" Notifications Push.html" title=" Notifications Push" class="link"><span class="text"> Notifications Push</span></a>
+            </li>
+            <li><a href="Statistiques.html" title="Statistiques" class="link"><span class="text">Statistiques</span></a>
+            </li>
+          </ul>
+        </nav>
+        <copyright>
+          <p>&copy;NEOMAD</p>
+        </copyright>
+      </section>
+    </footer>
+    <script src="js/l10n.js"></script>
+    <script src="js/libs.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="//localhost:35729/livereload.js"></script>
+    <!--[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
+    <noscript>JavaScript is off. Please enable to view full site.</noscript>
+  </body>
+</html>

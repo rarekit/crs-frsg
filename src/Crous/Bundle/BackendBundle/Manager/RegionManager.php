@@ -27,4 +27,9 @@ class RegionManager extends BaseManager
     {
         return $this->getRepository()->findOneByCode($code);
     }
+    
+    public function getRegions()
+    {
+        return $this->getRepository()->findBy(array(), array('name'=>'DESC'), 1000, 0);
+    }
 }

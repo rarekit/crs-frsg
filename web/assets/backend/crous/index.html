@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"><![endif]-->
-    <title>Homepage</title>
+    <title>Cnous Crous</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="robots" content="index, follow">
@@ -23,7 +23,7 @@
   <body class="home">
     <header>
       <section class="container">
-        <div class="top"><a href="index.html" title="Logo" class="logo"><img src="images/logo.png" alt="Crous"/></a><a class="btn-deconnect"><span>Déconnextion</span></a>
+        <div class="top"><a href="index.html" title="Logo" class="link logo"><img src="images/logo.png" alt="Crous"/></a><a class="btn-deconnect"><span>Déconnextion</span></a>
         </div>
         <nav class="navbar">
           <div class="navbar-header">
@@ -31,14 +31,14 @@
           </div>
           <!-- Collect the nav links, forms, and other content for toggling-->
           <div id="navbar-main" aria-expanded="false" style="height: 1px;" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li class="active"><a href="ACCUEIL.html" title=" ACCUEIL"> ACCUEIL</a>
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="ACCUEIL.html" title=" ACCUEIL" class="link"><span class="text"> ACCUEIL</span></a>
               </li>
-              <li><a href="GESTION DES FLUX.html" title="GESTION DES FLUX">GESTION DES FLUX</a>
+              <li><a href="GESTION DES FLUX.html" title="GESTION DES FLUX" class="link"><span class="text">GESTION DES FLUX</span></a>
               </li>
-              <li><a href="NOTIFICATIONS PUSH.html" title="NOTIFICATIONS PUSH">NOTIFICATIONS PUSH</a>
+              <li><a href="NOTIFICATIONS PUSH.html" title="NOTIFICATIONS PUSH" class="link"><span class="text">NOTIFICATIONS PUSH</span></a>
               </li>
-              <li><a href="statistiques.html" title="statistiques">statistiques</a>
+              <li><a href="statistiques.html" title="statistiques" class="link"><span class="text">statistiques</span></a>
               </li>
             </ul>
           </div>
@@ -47,81 +47,89 @@
     </header>
     <main>
       <section class="container">
-        <div class="inner">
+        <div class="inner full">
           <div class="row">
             <div class="col-xs-12 col-sm-4">
-              <div class="navbar-tab">
-                <ul id="myTab" role="tablist" class="nav nav-tabs">
-                  <li role="presentation" class="active"><a id="tab-1" href="#tab1" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">RÉSIDENCES UNIVERSITAIRES</a></li>
-                  <li role="presentation"><a id="tab-2" href="#tab2" role="tab" data-toggle="tab" aria-controls="profile">SERVICES</a></li>
-                  <li role="presentation"><a id="tab-3" href="#tab3" role="tab" data-toggle="tab" aria-controls="profile">SERVICE EN LIGNE</a></li>
-                  <li role="presentation"><a id="tab-4" href="#tab4" role="tab" data-toggle="tab" aria-controls="profile">EVENEMENTS CULTURELS</a></li>
-                </ul>
+              <div class="col-left">
+                <div class="navbar-tab">
+                  <ul id="myTab" role="tablist" class="nav nav-tabs">
+                    <li role="presentation" class="active"><a id="tab-1" href="#tab1" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">RÉSIDENCES UNIVERSITAIRES</a></li>
+                    <li role="presentation"><a id="tab-2" href="#tab2" role="tab" data-toggle="tab" aria-controls="profile">SERVICES</a></li>
+                    <li role="presentation"><a id="tab-3" href="#tab3" role="tab" data-toggle="tab" aria-controls="profile">SERVICE EN LIGNE</a></li>
+                    <li role="presentation"><a id="tab-4" href="#tab4" role="tab" data-toggle="tab" aria-controls="profile">EVENEMENTS CULTURELS</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-8">
-              <div class="row navbar-tab-content">
-                <div id="myTabContent" class="tab-content">
-                  <div id="tab1" role="tabpanel" aria-labelledby="tab-1" class="tab-pane fade in active">
-                    <div class="text-block">
-                      <p class="text-large">Flux &lt;<i>nom-flux</i>&gt; CROUS &lt;<i>nom-CROUS</i>&gt; <br>Enregistrement n°<i>n</i></p>
-                    </div>
-                    <div class="content">
-                      <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group list-style">
-                        <div class="panel">
-                          <div id="headingOne" role="tab" class="panel-heading">
-                            <h4 id="item1" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">Champ 1      </a></h4>
-                          </div>
-                          <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                
-                              - Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)
+              <div class="col-right">
+                <div class="row">
+                  <div class="navbar-tab-content">
+                    <div id="myTabContent" class="tab-content">
+                      <div id="tab1" role="tabpanel" aria-labelledby="tab-1" class="tab-pane fade in active">
+                        <div class="text-block">
+                          <p class="text-large">Flux &lt;<i>nom-flux</i>&gt; CROUS &lt;<i>nom-CROUS</i>&gt; <br>Enregistrement n°<i>n</i></p>
+                        </div>
+                        <div class="content">
+                          <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group list-style">
+                            <div class="panel">
+                              <div id="headingOne" role="tab" class="panel-heading">
+                                <h4 id="item1" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">Champ 1      </a></h4>
+                              </div>
+                              <div id="collapseOne" role="tabpanel" aria-labelledby="headingOne" aria-expanded="true" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    
+                                  - Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)
+                                </div>
+                              </div>
+                            </div>
+                            <div class="panel">
+                              <div id="headingTwo" role="tab" class="panel-heading">
+                                <h4 id="item2" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">Champ 2</a></h4>
+                              </div>
+                              <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" class="panel-collapse collapse">
+                                <div class="panel-body">- Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)</div>
+                              </div>
+                            </div>
+                            <div class="panel">
+                              <div id="headingThree" role="tab" class="panel-heading">
+                                <h4 id="item3" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">Champ 3</a></h4>
+                              </div>
+                              <div id="collapseThree" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" class="panel-collapse collapse">
+                                <div class="panel-body">- Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)</div>
+                              </div>
                             </div>
                           </div>
                         </div>
-                        <div class="panel">
-                          <div id="headingTwo" role="tab" class="panel-heading">
-                            <h4 id="item2" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">Champ 2</a></h4>
-                          </div>
-                          <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" class="panel-collapse collapse">
-                            <div class="panel-body">- Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)</div>
-                          </div>
-                        </div>
-                        <div class="panel">
-                          <div id="headingThree" role="tab" class="panel-heading">
-                            <h4 id="item3" class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">Champ 3</a></h4>
-                          </div>
-                          <div id="collapseThree" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" class="panel-collapse collapse">
-                            <div class="panel-body">- Giấy đề nghị cung cấp dịch vụ<br>- Bản sao giấy đăng ký kinh doanh (công chứng)<br>- Bản sao CMT nhân dân hoặc hộ chiếu của người đại diện cho đơn vị<br>- Các giấy tờ đặc biệt khác (nếu ngân hàng yêu cầu)</div>
-                          </div>
+                        <nav class="pager-block">
+                          <ul class="pager">
+                            <li><a href="backward.html" title="Backward" class="link backward">Backward</a>
+                            </li>
+                            <li><a href="prev.html" title="Previous" class="link prev">Previous</a>
+                            </li>
+                            <li><a href="next.html" title="Next" class="link next">Next</a>
+                            </li>
+                            <li><a href="foward.html" title="Foward" class="link foward">Forward</a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                      <div id="tab2" role="tabpanel" aria-labelledby="tab-2" class="tab-pane fade">
+                        <div class="content style-1">
+                          <p>Food truck fixie locavore, accusamus mcsweeney&apos;s marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.     </p>
                         </div>
                       </div>
                     </div>
-                    <nav>
-                      <ul class="pager">
-                        <li><a href="backward.html" title="Backward" class="backward">Backward</a>
-                        </li>
-                        <li><a href="prev.html" title="Previous" class="prev">Previous</a>
-                        </li>
-                        <li><a href="next.html" title="Next" class="next">Next</a>
-                        </li>
-                        <li><a href="foward.html" title="Foward" class="foward">Forward</a>
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                  <div id="tab2" role="tabpanel" aria-labelledby="tab-2" class="tab-pane fade">
-                    <div class="content style-1">
-                      <p>Food truck fixie locavore, accusamus mcsweeney&apos;s marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.     </p>
-                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="wrap-btn text-center">
-                <button type="button" id="ajouter" name="ajouter" class="btn btn-default">ajouter</button>
-                <button type="button" id="modifier" name="modifier" class="btn btn-default">modifier</button>
-                <button type="button" id="supPrimer" name="supPrimer" class="btn btn-primary">supPrimer</button>
-                <button type="button" id="abandon" name="abandon" class="btn btn-default">abandon</button>
+                <div class="row">
+                  <div class="wrap-btn text-center">
+                    <button type="button" id="ajouter" name="ajouter" class="btn btn-default">ajouter</button>
+                    <button type="button" id="modifier" name="modifier" class="btn btn-default">modifier</button>
+                    <button type="button" id="supPrimer" name="supPrimer" class="btn btn-default">supPrimer</button>
+                    <button type="button" id="abandon" name="abandon" class="btn btn-default">abandon</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -132,13 +140,13 @@
       <section class="container">
         <nav>
           <ul>
-            <li class="active"><a href=" Accueil.html" title=" Accueil"> Accueil</a>
+            <li class="active"><a href=" Accueil.html" title=" Accueil" class="link"><span class="text"> Accueil</span></a>
             </li>
-            <li><a href=" Gestion des Flux.html" title=" Gestion des Flux"> Gestion des Flux</a>
+            <li><a href=" Gestion des Flux.html" title=" Gestion des Flux" class="link"><span class="text"> Gestion des Flux</span></a>
             </li>
-            <li><a href=" Notifications Push.html" title=" Notifications Push"> Notifications Push</a>
+            <li><a href=" Notifications Push.html" title=" Notifications Push" class="link"><span class="text"> Notifications Push</span></a>
             </li>
-            <li><a href="Statistiques.html" title="Statistiques">Statistiques</a>
+            <li><a href="Statistiques.html" title="Statistiques" class="link"><span class="text">Statistiques</span></a>
             </li>
           </ul>
         </nav>

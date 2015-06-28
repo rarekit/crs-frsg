@@ -1,11 +1,13 @@
 Logout: Déconnextion
 Region Management: Gestion de Région
 House Management: Festion de la Chambre
-Service Management: Gestion des services
-Splash Management: Gestion Splash
-Online Service Management: Gestion des services en ligne
+Service Management: Services
+Splash Management: Splash Screen
+Online Service Management: Services en ligne
 Event Management: Culture Evénement
 DTD Management: La gestion DTD
+News Management: Actualités
+Menu Management: Menus
 
 #Actions
 Add New: Ajouter
@@ -28,6 +30,14 @@ Select a region: Sélectionner une région
 Region Name: Nom de la région
 Region: Région
 Content: Content
+Email: Adresse email
+Password: Mot de passe
+Remember me: Se souvenir de moi
+Login: se connecter
+Forgot password: MOT DE PASSE oublié ?
+
+
+#Title
 
 #message
 Your changes were saved: Vos modifications ont été enregistrées
