@@ -37,7 +37,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% if form.vars.value != null %}
+                                {% if form.vars.value.id != null %}
                                     {% for element in form.vars.value.elements%}
                                     <tr>
                                         <td>{{loop.index}}</td>
@@ -51,7 +51,7 @@
                                 {% endif %}
                             </tbody>
                         </table>
-                        {% if form.vars.value != null %}
+                        {% if form.vars.value.id != null %}
                         <a href="{{path('crous_backend_assistanceelement_add', {pid: form.vars.value.id})}}" class="btn btn-default">{{'Add Element'|trans}}</a>
                         {% endif %}
                     </div>
