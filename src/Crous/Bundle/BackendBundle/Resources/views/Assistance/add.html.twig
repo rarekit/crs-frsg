@@ -51,7 +51,9 @@
                                 {% endif %}
                             </tbody>
                         </table>
+                        {% if form.vars.value != null %}
                         <a href="{{path('crous_backend_assistanceelement_add', {pid: form.vars.value.id})}}" class="btn btn-default">{{'Add Element'|trans}}</a>
+                        {% endif %}
                     </div>
 
                 </div>
