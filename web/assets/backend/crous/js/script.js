@@ -2,9 +2,20 @@
   var panelHeading = $('.panel-heading');
   
   panelHeading.on('click', function(){
-    $(this).toggleClass('active');
+    $(this).addClass('active');
   });
-
+  $('body').click(function(e) {
+    var target = $(e.target);
+    if(!target.closest('.panel-heading.active').length){
+      $('.panel-heading').removeClass('active');
+      $('.panel-heading input').each(function() {
+        var element = $(this);
+        if (element.val() !== "") {
+          $(element).css({'display':'inline-block'});
+        }
+      });
+    }
+  });
   // return {
   //   publicVar: 1,
   //   publicObj: {

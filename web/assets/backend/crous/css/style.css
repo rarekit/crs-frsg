@@ -6159,6 +6159,9 @@ button.close {
   font-family: 'robotoregular', Helvetica, Arial, sans-serif;
   color: #999999;
 }
+.btn:visited {
+  color: #999999;
+}
 .btn:focus,
 .btn:active {
   border: 0;
@@ -6187,6 +6190,9 @@ button.close {
   padding-left: 15px;
   border-left: 1px solid #4996d1;
   padding: 10px 0 10px 10px;
+}
+.btn-deconnect:visited {
+  color: #4996d1;
 }
 .btn-deconnect:hover {
   color: #4996d1;
@@ -6306,13 +6312,13 @@ a:focus {
 .navbar-tab {
   background: none;
 }
-.nav-tabs {
+.navbar-tab .nav-tabs {
   font-size: 10px;
   border: 0;
   padding-top: 10px;
   background: url(../images/bg-tab.png) repeat-x 0 0;
 }
-.nav-tabs > li > a {
+.navbar-tab .nav-tabs > li > a {
   font-size: 1.3em;
   font-family: 'robotomedium', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
@@ -6322,20 +6328,26 @@ a:focus {
   margin-right: 0;
   background: none;
 }
-.nav-tabs > li > a:hover,
-.nav-tabs > li > a:focus {
+.navbar-tab .nav-tabs > li > a:hover,
+.navbar-tab .nav-tabs > li > a:focus {
   color: #ff5c00;
   background: none;
 }
-.nav-tabs > li.active a {
+.navbar-tab .nav-tabs > li.active a,
+.navbar-tab .nav-tabs > li a:active,
+.navbar-tab .nav-tabs > li a:visited {
   text-transform: upercase;
   color: white;
   background: #ff5c00 url(../images/bg-tab-active.png) repeat-y 100% 0;
   border: 0;
   border-radius: 0;
 }
-.nav-tabs > li.active a:hover,
-.nav-tabs > li.active a:focus {
+.navbar-tab .nav-tabs > li.active a:hover,
+.navbar-tab .nav-tabs > li a:active:hover,
+.navbar-tab .nav-tabs > li a:visited:hover,
+.navbar-tab .nav-tabs > li.active a:focus,
+.navbar-tab .nav-tabs > li a:active:focus,
+.navbar-tab .nav-tabs > li a:visited:focus {
   color: white;
   background: #ff5c00 url(../images/bg-tab-active.png) repeat-y 100% 0;
   border: 0;
@@ -6382,10 +6394,14 @@ a:focus {
 .pager li > a:focus {
   background-color: transparent;
 }
-.pager li:hover {
+.pager li:hover,
+.pager li:active,
+.pager li:visited {
   background: #373838 url(../images/bg-pager-btn.png) repeat-x 0 0;
 }
-.pager li:hover a {
+.pager li:hover a,
+.pager li:active a,
+.pager li:visited a {
   border-color: #373838;
 }
 .text-block {
@@ -6434,7 +6450,8 @@ a:focus {
   text-decoration: none;
 }
 .panel .panel-heading:hover,
-.panel .panel-heading.active {
+.panel .panel-heading.active,
+.panel .panel-heading:active {
   background: #cccccc;
 }
 .panel .panel-heading input {
@@ -6603,19 +6620,19 @@ footer copyright {
 .blue-theme .navbar .navbar-nav li a {
   font-size: 1.2em;
 }
-.blue-theme .nav-tabs {
+.blue-theme .navbar-tab .nav-tabs {
   min-height: auto;
 }
-.blue-theme .nav-tabs > li a {
+.blue-theme .navbar-tab .nav-tabs > li a {
   font-size: 1em;
 }
-.blue-theme .nav-tabs > li a:hover {
+.blue-theme .navbar-tab .nav-tabs > li a:hover {
   color: #6795ce;
 }
-.blue-theme .nav-tabs > li.active a {
+.blue-theme .navbar-tab .nav-tabs > li.active a {
   background: #6795ce url(../images/bg-tab-active.png) repeat-y 100% 0;
 }
-.blue-theme .nav-tabs > li.active a:hover {
+.blue-theme .navbar-tab .nav-tabs > li.active a:hover {
   color: white;
 }
 .blue-theme .btn-deconnect {
@@ -6684,14 +6701,14 @@ footer copyright {
     padding: 0 20px;
     border: 0;
   }
-  .nav-tabs {
+  .navbar-tab .nav-tabs {
     font-size: 14px;
     padding-top: 58px;
   }
-  .nav-tabs > li {
+  .navbar-tab .nav-tabs > li {
     width: 100%;
   }
-  .nav-tabs > li > a {
+  .navbar-tab .nav-tabs > li > a {
     padding: 20px 50px;
   }
   footer nav {
@@ -6700,7 +6717,7 @@ footer copyright {
   footer nav li {
     padding: 2px 20px;
   }
-  .blue-theme .nav-tabs {
+  .blue-theme .navbar-tab .nav-tabs {
     min-height: 315px;
   }
 }
