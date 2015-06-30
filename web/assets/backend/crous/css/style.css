@@ -6167,6 +6167,13 @@ button.close {
   border: 0;
   outline: 0;
 }
+.btn.btn-primary,
+.btn.btn-success,
+.btn.btn-info,
+.btn.btn-warning,
+.btn.danger {
+  color: #fff;
+}
 .btn-default:hover {
   color: white;
   background: #4996d1;
@@ -6199,16 +6206,20 @@ button.close {
 }
 .info-form input {
   display: none;
+  background-color: transparent;
+  border: 1px solid transparent;
 }
 .info-form .active input {
+  cursor: pointer;
   display: inline-block;
+  background-color: #fff;
 }
-.form-group label {
+.login-form .form-group label {
   font: 1em/1.2em 'robotoregular', Helvetica, Arial, sans-serif;
   color: #666666;
   text-transform: uppercase;
 }
-.form-group .form-control {
+.login-form .form-group .form-control {
   background: #cdcdcd;
   box-shadow: inset 0 10px 14px -5px #979797;
 }
@@ -6224,20 +6235,20 @@ button.close {
   font: 1.5em/1.5em 'robotobold', Helvetica, Arial, sans-serif;
   padding: 5px 25px;
 }
-.checkbox {
+.login-form .checkbox {
   margin-top: 53px;
   margin-bottom: 11px;
 }
-.checkbox label {
+.login-form .checkbox label {
   position: relative;
   padding-left: 0;
   font: 0.9em/2.5em 'robotoregular', Helvetica, Arial, sans-serif;
 }
-.checkbox label > span {
+.login-form .checkbox label > span {
   display: inline-block;
   vertical-align: middle;
 }
-.checkbox label > .glyphicon {
+.login-form .checkbox label > .glyphicon {
   position: relative;
   display: inline-block;
   margin-left: 0;
@@ -6248,15 +6259,15 @@ button.close {
   width: 24px;
   height: 24px;
 }
-.checkbox label > .glyphicon:before {
+.login-form .checkbox label > .glyphicon:before {
   opacity: 0;
   font-size: 2em;
   color: #4996d1;
 }
-.checkbox label .text {
+.login-form .checkbox label .text {
   margin-left: 10px;
 }
-.checkbox input[type="checkbox"] {
+.login-form .checkbox input[type="checkbox"] {
   position: absolute;
   left: 0;
   top: 0;
@@ -6265,7 +6276,7 @@ button.close {
   width: 24px;
   height: 24px;
 }
-.checkbox input[type="checkbox"]:checked + span:before {
+.login-form .checkbox input[type="checkbox"]:checked + span:before {
   opacity: 1;
 }
 .icon {
