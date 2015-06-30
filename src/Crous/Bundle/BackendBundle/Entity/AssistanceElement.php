@@ -3,6 +3,7 @@
 namespace Crous\Bundle\BackendBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Crous\Bundle\BackendBundle\Entity\Base\EntityInterface;
 
 /**
  * AssistanceElement
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table("assistance_elements")
  * @ORM\Entity(repositoryClass="Crous\Bundle\BackendBundle\Repository\AssistanceElementRepository")
  */
-class AssistanceElement
+class AssistanceElement implements EntityInterface
 {
     /**
      * @var integer
@@ -77,6 +78,10 @@ class AssistanceElement
      */
     private $sharingShortUrl;
 
+    /**
+     * @var string
+     */
+    public $file;
 
     /**
      * Get id

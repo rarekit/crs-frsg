@@ -6,14 +6,51 @@
         <div class="row">
             <div class="row" style="padding: 5px;">
                 {% include 'CrousBackendBundle:Block:messages.html.twig' %}
-
                 <h3>{{'Scholarship Management'|trans}}</h3>
-                <div class="form-body">
-                    <form class="form-horizontal" method="post" action="" enctype="multipart/form-data" novalidate="novalidate">
-                        {{form_widget(form)}}
-                        <button type="submit" class="btn btn-default">{{'Save'|trans}}</button>
-                        <a type="submit" href="{{path('crous_backend_scholarship_list')}}" class="btn btn-default">{{'Back'|trans}}</a>
-                    </form>   
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active">
+                        <a href="#info" aria-controls="info" role="tab" data-toggle="tab">{{'Informations'|trans}}</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="#elements" aria-controls="elements" role="tab" data-toggle="tab">{{'Elements'|trans}}</a>
+                    </li>
+                </ul> 
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="info">
+                        <div class="form-body">
+                            <form class="form-horizontal" method="post" action="" enctype="multipart/form-data" novalidate="novalidate">
+                                {{form_widget(form)}}
+                                <button type="submit" class="btn btn-default">{{'Save'|trans}}</button>
+                                <a type="submit" href="{{path('crous_backend_scholarship_list')}}" class="btn btn-default">{{'Back'|trans}}</a>
+                            </form>
+                        </div>
+                    </div>   
+                    <div role="tabpanel" class="tab-pane" id="elements">
+                        <table class="table table-bordered" style="margin-top: 10px;">
+                            <thead>
+                                <tr>
+                                    <th width="1%">{{'#'|trans}}</th>
+                                    <th>{{'Sub Title'|trans}}</th>
+                                    <th width="20%">{{'Action'|trans}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% if form.vars.value != null %}
+                                    {% for scholarship in form.vars.value.elements%}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{scholarship.subTitle}}</td>
+                                        <td>
+                                            <a href="{{path('crous_backend_scholarshipelement_add', {id: scholarship.id, pid: scholarship.id})}}">{{'Edit'|trans}}</a> |
+                                            <a onclick="return confirm('{{'Do you want to delete this record?'|trans}}');" href="{{path('crous_backend_scholarshipelement_delete', {id: scholarship.id})}}">{{'Delete'|trans}}</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% endif %}
+                            </tbody>
+                        </table>
+                        <a href="{{path('crous_backend_scholarshipelement_add', {pid: form.vars.value.id})}}" class="btn btn-default">{{'Add Element'|trans}}</a>
+                    </div>
                 </div>
             </div>
         </div>

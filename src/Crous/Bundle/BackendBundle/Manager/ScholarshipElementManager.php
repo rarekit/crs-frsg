@@ -11,11 +11,11 @@ namespace Crous\Bundle\BackendBundle\Manager;
 use Crous\Bundle\BackendBundle\Manager\Base\BaseManager;
 
 /**
- * ScholashipElementManager
+ * ScholarshipElementManager
  */
-class ScholashipElementManager extends BaseManager
+class ScholarshipElementManager extends BaseManager
 {
-    protected $_entityName = 'ScholashipElement';
+    protected $_entityName = 'ScholarshipElement';
     
     /**
      * get objects by criterias
