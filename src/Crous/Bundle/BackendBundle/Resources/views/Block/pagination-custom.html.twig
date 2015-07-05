@@ -1,0 +1,17 @@
+{% if lastPage > 1 %} 
+    {% set url = app.request.getRequestURI()|replace({('?page=' ~ currentPage) : '', ('&page=' ~ currentPage) : '', ('&page=' ~ currentPage) : ''}) %} 
+    {% if '?' in url %} 
+        {% set url = url ~ '&' %} 
+    {% else %} 
+        {% set url = url ~ '?' %} 
+    {% endif %}
+    
+    <nav class="pager-block">
+        <ul class="pager">
+            <li><a href="{{ url ~ 'page=' ~ previousPage}}" title="Previous" class="link prev">Previous</a>
+            </li>
+            <li><a href="{{ url ~ 'page=' ~ nextPage }}" title="Next" class="link next">Next</a>
+            </li>
+        </ul>
+    </nav>
+{% endif %}

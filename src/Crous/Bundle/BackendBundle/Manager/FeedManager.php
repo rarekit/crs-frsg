@@ -11,13 +11,24 @@ namespace Crous\Bundle\BackendBundle\Manager;
 use Crous\Bundle\BackendBundle\Manager\Base\BaseManager;
 
 /**
- * DtdManager
+ * FeedManager
  */
-class DtdManager extends BaseManager
+class FeedManager extends BaseManager
 {
-    protected $_entityName = 'Dtd';
+    protected $_entityName = 'Feed';
     
-    public function getDtds()
+    /**
+     * find one by
+     * 
+     * @param array $criteria
+     * @return null|Feed
+     */
+    public function findOneBy($criteria)
+    {
+        return $this->getRepository()->findOneBy($criteria);
+    }
+    
+    public function getFeeds()
     {
         return $this->getRepository()->findBy(array());
     }

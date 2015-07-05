@@ -6237,13 +6237,16 @@ button.close {
 }
 .info-form input {
   display: none;
-  background-color: transparent;
-  border: 1px solid transparent;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 .info-form .active input {
   cursor: pointer;
   display: inline-block;
-  background-color: #fff;
+  /*background-color: transparent;*/
+  /*border-color: transparent;*/
+  /*border-style: none;*/
+  /*box-shadow: none;*/
 }
 .login-form .form-group label {
   font: 1em/1.2em 'robotoregular', Helvetica, Arial, sans-serif;
@@ -6548,8 +6551,8 @@ a:focus {
   background: none;
 }
 .navbar-tab .nav-tabs > li.active a,
-.navbar-tab .nav-tabs > li a:active,
-.navbar-tab .nav-tabs > li a:visited {
+.navbar-tab .nav-tabs > li a:active
+ {
   text-transform: upercase;
   color: white;
   background: #ff5c00 url(../images/bg-tab-active.png) repeat-y 100% 0;
@@ -6667,7 +6670,7 @@ a:focus {
 .panel .panel-heading:hover,
 .panel .panel-heading.active,
 .panel .panel-heading:active {
-  background: #cccccc;
+  /*background: #cccccc;*/
 }
 .panel .panel-heading input {
   width: 50%;

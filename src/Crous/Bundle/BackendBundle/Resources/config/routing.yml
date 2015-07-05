@@ -59,3 +59,8 @@ crous_backend_scholarshipelement:
 crous_backend_assistanceelement:
     resource: "@CrousBackendBundle/Resources/config/routing/assistance_element.yml"
     prefix:   /assistance-element
+    
+crous_backend_user:
+    resource: "@CrousBackendBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+

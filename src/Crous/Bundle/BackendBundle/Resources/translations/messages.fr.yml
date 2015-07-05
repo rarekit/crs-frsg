@@ -27,7 +27,9 @@ Save: Sauvegarder
 Back: Dos
 Select a value: Sélectionner une valeur
 Select a region: Sélectionner une région
-
+Add Feed: Ajoter un flux
+Sync Feed: Synchroniser tous les flux
+ 
 #Fields
 Region Name: Nom de la région
 Region: Région
@@ -37,7 +39,13 @@ Password: Mot de passe
 Remember me: Se souvenir de moi
 Login: se connecter
 Forgot password: MOT DE PASSE oublié ?
-
+Confirm: Valider
+Remove: Abandonner
+Firstname: Prénom
+Lastname: Nom
+Username: Utilisateur
+Password: Mot de Passe
+Active: Actif
 
 #Title
 

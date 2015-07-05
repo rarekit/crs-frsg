@@ -5,7 +5,7 @@ crous_backend:
             entity_class: \Crous\Bundle\BackendBundle\Entity\User
             manager_class: \Crous\Bundle\BackendBundle\Manager\UserManager
             form:
-                class: ~
+                class: \Crous\Bundle\BackendBundle\Form\Type\UserType
                 filter_class: ~
         role: 
             entity_class: \Crous\Bundle\BackendBundle\Entity\Role
@@ -78,5 +78,11 @@ crous_backend:
             manager_class: \Crous\Bundle\BackendBundle\Manager\AssistanceElementManager
             form:
                 class: \Crous\Bundle\BackendBundle\Form\Type\AssistanceElementType
+                filter_class: ~
+        feed: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Feed
+            manager_class: \Crous\Bundle\BackendBundle\Manager\FeedManager
+            form:
+                class: ~
                 filter_class: ~
         

@@ -46,15 +46,15 @@ class BaseManager implements ManagerInterface {
      * @param object $object
      */
     public function save(EntityInterface $entity, $isFlush = true) {
-        try {
+       // try {
             $this->_entityManager->persist($entity);
             if ($isFlush) {
                 $this->_entityManager->flush();
             }
             return true;
-        } catch (\Exception $e) {
-            return false;
-        }
+        //} catch (\Exception $e) {
+         //   return false;
+       // }
     }
 
     /**

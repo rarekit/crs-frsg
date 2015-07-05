@@ -1,0 +1,16 @@
+#crous_backend_user_list:
+#    path:     /{id}
+#    defaults: { _controller: CrousBackendBundle:User:list, id:null}
+#    requirements:
+#        id:  \d+
+
+crous_backend_user_add:
+    path:     /{type}/{id}
+    defaults: { _controller: CrousBackendBundle:User:addCustom, type: 2, id:null }
+    requirements:
+        type:  \d+
+        id:  \d+
+    
+crous_backend_user_delete:
+    path:     /delete/{id}
+    defaults: { _controller: CrousBackendBundle:User:delete}

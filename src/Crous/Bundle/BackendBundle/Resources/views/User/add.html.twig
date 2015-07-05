@@ -1,0 +1,95 @@
+{% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
+{% set id = null %}
+{% set open = '' %}
+{% if form.vars.value != '' %}
+    {% set id = form.vars.value.id  %}
+    {% set open = ' active' %}
+{% endif %}
+<form action="{{path('crous_backend_user_add', {id: id})}}" method="POST" class="info-form" novalidate="novalidate">
+    <div class="navbar-tab-content">
+        <div id="myTabContent" class="tab-content">
+            <div id="tab1" role="tabpanel" aria-labelledby="tab-1" class="tab-pane fade in active">
+                <div class="wrap-btn style-1">
+                    <a href="index.html" title="création" class="link btn btn-default"><span class="text">création</span></a>
+                    <a href="index.html" title="modification" class="link btn btn-default"><span class="text">modification</span></a>
+                    <a href="index.html" title="suppression" class="link btn btn-default"><span class="text">suppression</span></a>
+                </div>
+                <div class="content">
+                    <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group panel-form list-style">
+                        <div class="panel">
+                            <div id="headingOne" role="tab" class="panel-heading{{open}}">
+                                <h4 id="item1" class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="collapsed">
+                                        {{'Username'|trans}}</a>
+                                </h4>
+                                {{form_widget(form.username)}}
+                                {{form_errors(form.username)}}
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div id="headingTwo" role="tab" class="panel-heading{{open}}">
+                                <h4 id="item2" class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="collapsed">
+                                        {{'Password'|trans}}
+                                    </a>
+                                </h4>
+                                {{form_widget(form.password)}}
+                                {{form_errors(form.password)}}
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div id="headingThree" role="tab" class="panel-heading{{open}}">
+                                <h4 id="item3" class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree" class="collapsed">
+                                        {{'Lastname'|trans}}
+                                    </a>
+                                </h4>
+                                {{form_widget(form.lastname)}}
+                                {{form_errors(form.lastname)}}
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div id="headingFour" role="tab" class="panel-heading{{open}}">
+                                <h4 id="item4" class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour" class="collapsed">
+                                        {{'Firstname'|trans}}
+                                    </a>
+                                </h4>
+                                {{form_widget(form.firstname)}}
+                                {{form_errors(form.firstname)}}
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div id="headingFive" role="tab" class="panel-heading{{open}}">
+                                <h4 id="item5" class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="collapsed">
+                                        {{'Email'|trans}}
+                                    </a>
+                                </h4>
+                                {{form_widget(form.email)}}
+                                {{form_errors(form.email)}}
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div id="headingSix" role="tab" class="panel-heading{{open}}">
+                                <h4 id="item6" class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix" class="collapsed">
+                                        {{'Active'|trans}}
+                                    </a>
+                                </h4>
+                                {{form_widget(form.active)}}
+                                {{form_errors(form.active)}}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrap-btn text-center">
+        {{form_widget(form._token)}}
+        <button type="submit" id="valider" name="valider" class="btn btn-default">{{'Confirm'|trans}}</button>
+        <a id="abandonner" name="abandonner" class="btn btn-default">{{'Remove'|trans}}</a>
+    </div>
+</form>

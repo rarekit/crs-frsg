@@ -38,9 +38,42 @@ class DtdSubscriber implements EventSubscriberInterface
     {
         return array(
             FormEvents::PRE_SET_DATA => 'preSetData',
+            FormEvents::POST_BIND => 'postBind',
         );
     }
 
+    /**
+     * @param FormEvent $event
+     */
+    public function postBind(FormEvent $event)
+    {
+        $data = $event->getData();
+        $regions = $this->_container->get('manager_factory')
+                ->create('region')
+                ->findBy(array(), array());
+        $feedMgr = $this->_container->get('manager_factory')
+                ->create('feed');
+        foreach ($regions as $region) {
+            $feed = $feedMgr->findOneBy(array('dtd' => $data, 'region' => $region));
+            if (is_null($feed)) {
+                $feed = $this->_container->get('entity_factory')
+                        ->create('feed');
+            }
+            
+            $url = $this->_container->getParameter('dtd_url') 
+                    . "{$region->getName()}-{$data->getFilename()}";
+            $feed->setDtd($data)
+                ->setRegion($region)
+                ->setFilename("{$region->getName()}-{$data->getFilename()}")
+                ->setEmail($region->getEmail())
+                ->setUrl($url)
+                ->setActive(true)
+                ;
+            $feedMgr->save($feed, false);
+        }
+    }
+
+    
     /**
      * @param FormEvent $event
      */
@@ -48,7 +81,6 @@ class DtdSubscriber implements EventSubscriberInterface
     {
         $form = $event->getForm();
         $data = $event->getData();
-
         if (is_null($data->getId())) {
             $form->add('filename', null, array(
                 'label' => 'Filename on FTP',

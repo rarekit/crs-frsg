@@ -18,9 +18,11 @@ class DefaultController extends Controller
         $token = $csrf->generateCsrfToken('region');
 
         $regions = $this->get('manager_factory')->create('region')->getRegions();
+        $dtds = $this->get('manager_factory')->create('dtd')->getDtds();
         return $this->render('CrousBackendBundle:Default:flux-dashboard.html.twig', array(
                     'regions' => $regions,
-                    'token'   => $token
+                    'dtds' => $dtds,
+                    'token' => $token
         ));
     }
 
