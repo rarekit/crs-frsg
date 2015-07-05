@@ -9,3 +9,11 @@ crous_backend_house_add:
 crous_backend_house_delete:
     path:     /delete/{id}
     defaults: { _controller: CrousBackendBundle:House:delete}
+
+crous_backend_house_delete_image:
+    path:     /delete-image/{id}
+    defaults: { _controller: CrousBackendBundle:House:deleteImage}
+    
+crous_backend_house_export:
+    path:     /export
+    defaults: { _controller: CrousBackendBundle:House:export }

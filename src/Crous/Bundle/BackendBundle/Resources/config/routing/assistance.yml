@@ -9,3 +9,7 @@ crous_backend_assistance_add:
 crous_backend_assistance_delete:
     path:     /delete/{id}
     defaults: { _controller: CrousBackendBundle:Assistance:delete}
+    
+crous_backend_assistance_delete_image:
+    path:     /delete-image/{id}
+    defaults: { _controller: CrousBackendBundle:Assistance:deleteImage}

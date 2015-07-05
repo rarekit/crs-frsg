@@ -36,3 +36,89 @@
 //   });
 
 // });
+
+(function (window, App) {
+
+  "use strict";
+
+  App = {};
+  App.settings = {};
+  App.settings.locales = {};
+
+  window.App = App;
+
+}(window));
+
+/* =========
+ * custom-select.js
+ * ========= */
+
+(function($, App) {
+
+  "use strict";
+
+  /* ============== */
+  /* MODULE TRIGGER */
+  /* ============== */
+
+  var selectTrigger = '.custom-select';
+
+  /* =============== */
+  /* MODULE DEFAULTS */
+  /* =============== */
+
+  var defaults = {
+    classActive: 'active'
+  };
+
+  /* ================= */
+  /* MODULE DEFINITION */
+  /* ================= */
+
+  function CustomSelect(opts) {
+    this.settings = $.extend({}, defaults, opts);
+    return this.init();
+  }
+
+  /* ============== */
+  /* MODULE METHODS */
+  /* ============== */
+
+  CustomSelect.prototype.init = function() {
+    var that = this;
+
+    $('select', selectTrigger).each(function() {
+      that.getSelectVal(this);
+    })
+    .on('change.customSelect', function() {
+      that.getSelectVal(this);
+    });
+  };
+
+  CustomSelect.prototype.getSelectVal = function(el) {
+    var wrapper = $(el).closest(selectTrigger);
+
+    $('span', wrapper).html($('option:selected', el).text());
+    if (el.value.length) {
+      wrapper.addClass(this.settings.classActive);
+    }
+    else {
+      wrapper.removeClass(this.settings.classActive);
+    }
+  };
+
+  /* =============== */
+  /* MODULE DATA-API */
+  /* =============== */
+
+  $(function() {
+    App.customSelect = new CustomSelect();
+  });
+  
+  $("input[type=file]").on('change',function(){
+      $(this).closest('div').find('.file-name').html(this.files[0].name);
+   });
+  
+
+}(window.jQuery, window.App));
+

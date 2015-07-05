@@ -9,3 +9,7 @@ crous_backend_onlineservice_add:
 crous_backend_onlineservice_delete:
     path:     /delete/{id}
     defaults: { _controller: CrousBackendBundle:OnlineService:delete}
+    
+crous_backend_onlineservice_export:
+    path:     /export
+    defaults: { _controller: CrousBackendBundle:OnlineService:export }

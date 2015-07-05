@@ -5,15 +5,15 @@
         {{ form_label(form) }}
         {{ form_widget(form) }}
         {{ form_errors(form) }}
-        
-   </div>
+
+    </div>
 {% endblock field_row %}
 
 {% block form_label %}
     {% if label is empty %}
         {% set label = name|humanize %}
     {% endif %}
-    <label class="control-label" for="{{ id }}">
+    <label class="label" for="{{ id }}">
         {% if translation_domain is defined%}
             {{ label|trans({}, translation_domain)|raw }}:
         {% else %}
@@ -32,27 +32,82 @@
 {% endblock %}
 
 {% block form_row %}
-    <div class="form-group">
-        {{ form_label(form) }}
-        {% if 'checkbox' in form.vars.block_prefixes %}
-            <div class="checkbox">
-                <label>
-                {{ form_widget(form) }}
-                </label>
+    {% if 'checkbox' in form.vars.block_prefixes %}
+        <div class="form-group">
+            <div class="col-sm-3">
+                {{ form_label(form) }}
             </div>
-            {{ form_errors(form) }}
-        {% elseif 'date' in  form.vars.block_prefixes %}
-            <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-                {{ form_widget(form) }}
-                <span class="input-group-btn">
-                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                </span>
+            <div class="col-sm-9">
+                <div class="checkbox">
+                    <label>
+                        {{ form_widget(form) }}
+                    </label>
+                </div>
+                {{ form_errors(form) }}
             </div>
-        {% else %}
-        {{ form_widget(form) }}
-        {{ form_errors(form) }}
-        {% endif %}  
-   </div>
+        </div>
+    {% elseif 'date' in  form.vars.block_prefixes %}
+        <div class="form-group">
+            <div class="col-sm-3">
+                {{ form_label(form) }}
+            </div>
+            <div class="col-sm-9">
+                <div class="date date-picker" data-date-format="dd/mm/yyyy">
+                    <a href="javascript:;" title="select" class="dropdown-select">
+                        <i class="icon-select"></i>
+                    </a>
+                    {{ form_widget(form) }}
+                </div>
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% elseif 'choice' in form.vars.block_prefixes %}
+        <div class="form-group">
+            <div class="col-sm-3">
+                {{ form_label(form) }}
+            </div>
+            <div class="col-sm-9">
+                <div class="custom-select"><span>-Select-</span><a href="javascript:;" title="select" class="dropdown-select"><i class="icon-select"></i></a>
+                        {{ form_widget(form) }}
+                        {{ form_errors(form) }}
+                </div>
+            </div>
+        </div>
+    {% elseif 'image' in form.vars.block_prefixes %}
+
+        <div class="form-group">
+            <div class="col-sm-3">
+                {{ form_label(form) }}
+            </div>
+            <div class="col-sm-9">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+        {% if thumbnail_url is defined and thumbnail_url != '' %}
+            <div class="form-group">
+                <div class="col-sm-3">
+                    <label class="label">{{ 'Thumbnail'|trans }}</label>
+                </div>
+                <div class="col-sm-9">
+                    <a target="_blank" href="{{ asset(thumbnail_url) }}" class="link thumbnail-img">
+                        <span class="text">> {{ app.request.getSchemeAndHttpHost() ~ asset(thumbnail_url) }}</span>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="form-group">
+            <div class="col-sm-3">
+                {{ form_label(form) }}
+            </div>
+            <div class="col-sm-9">
+                {{ form_widget(form) }}
+                {{ form_errors(form) }}
+            </div>
+        </div>
+    {% endif %}  
+
 {% endblock form_row %}
 
 {% block filemanage_widget %}
@@ -66,37 +121,35 @@
     {% endspaceless %}
 {% endblock %}
 
-{% block choice_widget_expanded %}
-    {% spaceless %}
-    <div class="form-control height-auto">
-        <div class="scroller" style="height:150px;" data-always-visible="1">
-            <ul class="list-unstyled">
-            {%- for child in form %}
-                <li><label>{{- form_widget(child) -}}{{ child.vars.label }}</label></li>
-            {% endfor -%}
-            </ul>
-        </div>
-    </div>
-    {% endspaceless %}
-{% endblock choice_widget_expanded %}
-{% block elfinder_widget %}
-    <input type="text" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} data-type="elfinder-input-field" />
-{% endblock %}
 
 {% block file_widget %}
     {% spaceless %}
-    <div class="form-group">
-        {% if thumbnail_url is defined and thumbnail_url is not null %}
-            <img src="{{ asset(thumbnail_url) }}"/>
-        {% endif %}
-        {{ form_widget(form) }}
-    </div>
-    {% if thumbnail_url is defined and thumbnail_url is not null %}
-        <div class="form-group">
-            <label class="control-label">{{ 'Thumbnail Url'|trans }}: </label><br>
-            <a target="_blank" href="{{ asset(thumbnail_url) }}">{{ app.request.getSchemeAndHttpHost() ~ asset(thumbnail_url) }}</a>
+        <div class="custom-upload">
+            <div class="row">
+                <div class="img-upload">
+                    <figure><span>
+                            {% if thumbnail_url is defined and thumbnail_url !='' %}
+                                <img src="{{ asset(thumbnail_url) }}"/>
+                            {% endif %}
+                        </span></figure>
+                </div>
+                <div class="wrap-btn style-2">
+                    {% if form.vars.attr['delete_route'] is defined 
+                            and form.vars.attr['delete_route'] != '' 
+                            and form.vars.form.parent.vars.value.id != ''
+                            and image_url != ''
+                    %}
+                            
+                    <a id="remove" href="{{path(form.vars.attr['delete_route'], {id: form.vars.form.parent.vars.value.id})}}" name="remove" title="Remove" class="btn btn-default">Remove</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="upload-file"><span class="file-name">File name</span>
+                    {{ form_widget(form) }}<a href="javascript:;" class="btn-upload">Browse</a>
+                </div>
+            </div>
         </div>
-    {% endif %}
     {% endspaceless %}
 {% endblock file_widget %}
 

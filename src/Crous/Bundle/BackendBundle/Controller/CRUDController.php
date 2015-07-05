@@ -35,7 +35,7 @@ class CRUDController extends Controller
                 $filterData = $form->getData();
             }
         }
-        
+
         $manager = $this->get('manager_factory')->create($this->_ctrKey);
         $entities = $manager->findBy($filterData, array(), $limit, $offset);
         $totalRecord = $manager->countBy($filterData);
@@ -93,7 +93,7 @@ class CRUDController extends Controller
 
         $template = 'CrousBackendBundle:' . ucfirst($this->_ctrKey) . ':add.html.twig';
         return $this->render($template, array(
-                    'form' => $form->createView()
+                    'form' => $form->createView(),
         ));
     }
 
@@ -131,6 +131,52 @@ class CRUDController extends Controller
         }
         $listRoute = 'crous_backend_' . strtolower($this->_ctrKey) . '_list';
         return $this->redirectToRoute($listRoute);
+    }
+
+    /**
+     * Delete action
+     * 
+     * @param Request $request
+     * @param integer $id
+     * @return void
+     * @throws NotFoundException
+     */
+    public function deleteImageAction(Request $request, $id)
+    {
+        if (!is_null($id)) {
+            $entity = $this->get('entity_factory')->get($this->_ctrKey, $id);
+            if (is_null($entity)) {
+                throw $this->createNotFoundException();
+            }
+
+
+            $this->_webRoot = $this->get('kernel')->getRootDir() . '/../web';
+            $image = $entity->getImageUrl();
+            if (!empty($image)) {
+                if (file_exists($this->_webRoot . $image)) {
+                    unlink($this->_webRoot . $image);
+                }
+                $entity->setImageUrl('');
+            }
+            $thumbnail = $entity->getThumbnailUrl();
+            if (!empty($thumbnail)) {
+                if (file_exists($this->_webRoot . $thumbnail)) {
+                    unlink($this->_webRoot . $thumbnail);
+                }
+                $entity->setThumbnailUrl('');
+            }
+
+            $result = $this->get('manager_factory')
+                    ->create($this->_ctrKey)
+                    ->save($entity);
+            if ($result) {
+                $this->addMessage('success', 'The image was deleted');
+            } else {
+                $this->addMessage('error', 'Error occurred while deleted');
+            }
+        }
+        $listRoute = 'crous_backend_' . strtolower($this->_ctrKey) . '_add';
+        return $this->redirectToRoute($listRoute, array('id' => $id));
     }
 
     /**

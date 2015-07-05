@@ -57,7 +57,7 @@ class EventType extends AbstractType
         ))->add('eventDate', null, array(
             'label' => 'Date',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control datepicker',
                 'placeholder' => 'dd/mm/yyyy'
             ),
             'widget' => 'single_text',
@@ -66,7 +66,7 @@ class EventType extends AbstractType
         ))->add('text', 'textarea', array(
             'label' => 'Text',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control tinymce',
                 'placeholder' => 'Text',
             ),
             'required' => false
@@ -81,6 +81,7 @@ class EventType extends AbstractType
             'label' => 'Image',
             'attr' => array(
                 'placeholder' => 'Image',
+                'delete_route' => 'crous_backend_event_delete_image',
             ),
             'required' => false
         ))->add('sharingUrl', 'text', array(

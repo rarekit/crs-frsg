@@ -9,3 +9,11 @@ crous_backend_service_add:
 crous_backend_service_delete:
     path:     /delete/{id}
     defaults: { _controller: CrousBackendBundle:Service:delete}
+    
+crous_backend_service_delete_image:
+    path:     /delete-image/{id}
+    defaults: { _controller: CrousBackendBundle:Service:deleteImage}
+    
+crous_backend_service_export:
+    path:     /export
+    defaults: { _controller: CrousBackendBundle:Service:export }

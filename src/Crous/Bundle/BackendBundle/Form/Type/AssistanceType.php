@@ -54,10 +54,10 @@ class AssistanceType extends AbstractType
                 'placeholder' => 'Title'
             ),
             'required' => true
-        ))->add('assistanceDate', null, array(
+        ))->add('assistanceDate', 'date', array(
             'label' => 'Date',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control datepicker',
                 'placeholder' => 'dd/mm/yyyy'
             ),
             'widget' => 'single_text',
@@ -74,6 +74,7 @@ class AssistanceType extends AbstractType
             'label' => 'Image',
             'attr' => array(
                 'placeholder' => 'Image',
+                'delete_route' => 'crous_backend_assistance_delete_image',
             ),
             'required' => false
         ))->add('imageShortUrl', 'text', array(

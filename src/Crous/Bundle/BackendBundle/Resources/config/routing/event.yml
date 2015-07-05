@@ -9,3 +9,11 @@ crous_backend_event_add:
 crous_backend_event_delete:
     path:     /delete/{id}
     defaults: { _controller: CrousBackendBundle:Event:delete}
+    
+crous_backend_event_delete_image:
+    path:     /delete-image/{id}
+    defaults: { _controller: CrousBackendBundle:Event:deleteImage}
+    
+crous_backend_event_export:
+    path:     /export
+    defaults: { _controller: CrousBackendBundle:Event:export }

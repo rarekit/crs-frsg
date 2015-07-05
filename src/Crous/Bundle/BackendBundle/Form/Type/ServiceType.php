@@ -94,7 +94,7 @@ class ServiceType extends AbstractType
         ))->add('content', 'textarea', array(
             'label' => 'Content',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control tinymce',
                 'placeholder' => 'Content',
             ),
             'required' => false
@@ -102,6 +102,7 @@ class ServiceType extends AbstractType
                 'label' => 'Image',
                 'attr' => array(
                     'placeholder' => 'Image',
+                    'delete_route' => 'crous_backend_service_delete_image',
                 ),
                 'required' => false
         ))

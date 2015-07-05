@@ -1,22 +1,33 @@
 {% extends 'CrousBackendBundle::layout.html.twig' %} 
-
+{% block meta%}
+    <title>{{'House Management'|trans}}</title>
+    <meta name="description" content="{{'House Management'|trans}}">
+    <meta name="keywords" content="{{'House Management'|trans}}">
+{% endblock %}
+{%block homecls%}class="blue-theme"{%endblock%}
 {% block body %}
     {% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
-    <div class="inner full">
-        <div class="row">
-            <div class="row" style="padding: 5px;">
-                {% include 'CrousBackendBundle:Block:messages.html.twig' %}
-
-                <h3>{{'House Management'|trans}}</h3>
-                <div class="form-body">
-                    <form class="form-horizontal" method="post" action="" enctype="multipart/form-data" novalidate="novalidate">
+    <div class="inner">
+        <form class="form-default formulaire-form" method="post" action="" enctype="multipart/form-data" novalidate="novalidate">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
+                    {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+                    <div class="form-body">
                         {{form_widget(form)}}
-                        <button type="submit" class="btn btn-default">{{'Save'|trans}}</button>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-sm-offset-3">
+                    <div class="wrap-btn style-3">
+                        <button type="submit" id="save" name="save" title="{{'Save'|trans}}" class="btn btn-default">{{'Save'|trans}}</button>
                         <a type="submit" href="{{path('crous_backend_house_list')}}" class="btn btn-default">{{'Back'|trans}}</a>
-                    </form>   
+                    </div>
                 </div>
             </div>
-        </div>
+        </form> 
     </div>
 {% endblock %}
-
+{% block javascript %}
+{{ parent() }}
+{{ tinymce_init() }}
+{% endblock %}

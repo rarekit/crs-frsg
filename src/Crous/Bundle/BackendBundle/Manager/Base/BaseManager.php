@@ -108,5 +108,16 @@ class BaseManager implements ManagerInterface {
     {
         return $criteria;
     }
+    
+    /**
+     * findByRegionId
+     * 
+     * @param integer $regionId
+     * @return type
+     */
+    public function findByRegionId($regionId)
+    {
+        return $this->getRepository()->findByRegion($regionId);
+    }
 
 }

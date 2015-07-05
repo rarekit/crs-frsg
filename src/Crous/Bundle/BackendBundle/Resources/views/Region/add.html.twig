@@ -1,22 +1,29 @@
 {% extends 'CrousBackendBundle::layout.html.twig' %} 
-
+{% block meta%}
+    <title>{{'Region Management'|trans}}</title>
+    <meta name="description" content="{{'Region Management'|trans}}">
+    <meta name="keywords" content="{{'Region Management'|trans}}">
+{% endblock %}
+{%block homecls%}class="blue-theme"{%endblock%}
 {% block body %}
-    <div class="inner full">
-        <div class="row">
-            {% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
-            <div class="row" style="padding: 5px;">
-                {% include 'CrousBackendBundle:Block:messages.html.twig' %}
-
-                <h3>{{'Region Management'|trans}}</h3>
-                <div class="form-body">
-                    <form class="form-horizontal" method="post" action="" novalidate="novalidate">
+    <div class="inner">
+        <form class="form-default formulaire-form" method="post" action="" enctype="multipart/form-data" novalidate="novalidate">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
+                    {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+                    <div class="form-body">
                         {{form_widget(form)}}
-                        <button type="submit" class="btn btn-default">{{'Save'|trans}}</button>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-sm-offset-3">
+                    <div class="wrap-btn style-3">
+                        <button type="submit" id="save" name="save" title="{{'Save'|trans}}" class="btn btn-default">{{'Save'|trans}}</button>
                         <a type="submit" href="{{path('crous_backend_region_list')}}" class="btn btn-default">{{'Back'|trans}}</a>
-                    </form>   
+                    </div>
                 </div>
             </div>
-        </div>
+        </form> 
     </div>
 {% endblock %}
 

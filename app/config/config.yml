@@ -3,6 +3,8 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: crous_backend.yml }
+    - { resource: ext/elfinder.yml }
+    - { resource: ext/tinymce.yml }
     
 framework:
     #esi:             ~

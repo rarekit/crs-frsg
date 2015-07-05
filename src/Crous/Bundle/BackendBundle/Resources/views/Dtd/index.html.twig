@@ -1,41 +1,51 @@
 {% extends 'CrousBackendBundle::layout.html.twig' %} 
-
+{% block meta%}
+    <title>{{'DTD Management'|trans}}</title>
+    <meta name="description" content="{{'DTD Management'|trans}}">
+    <meta name="keywords" content="{{'DTD Management'|trans}}">
+{% endblock %}
+{%block homecls%}class="blue-theme"{%endblock%}
 {% block body %}
-    <div class="inner full">
+    <div class="inner">
         <div class="row">
-            <div class="row" style="padding: 5px;">
-                {% include 'CrousBackendBundle:Block:messages.html.twig' %}
-
-                <h3>{{'DTD Management'|trans}}</h3>
-                <div class="btn-toolbar pull-right" style="margin-bottom: 9px">
-                    <a class="btn btn-default" href="{{path('crous_backend_dtd_add')}}" role="button">{{'Add New'|trans}}</a>     
+            <div class="row">
+                <div class="col-xs-12">
+                    {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+                    <div class="wrap-btn text-right">
+                        <a id="ajouter" href="{{path('crous_backend_dtd_add')}}" name="ajouter" class="btn btn-default">{{'Add New'|trans}}</a>
+                    </div>
+                    <div class="table-responsive custom-table style-3">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="1%">{{'#'|trans}}</th>
+                                    <th>{{'Label'|trans}}</th>
+                                    <th>{{'File'|trans}}</th>
+                                    <th>{{'Region'|trans}}</th>
+                                    <th width="10%"></th>
+                                    <th width="10%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for dtd in entities%}
+                                    <tr class="{% if loop.index % 2 == 1%}odd{%else%}even{%endif%}">
+                                        <td>{{loop.index}}</td>
+                                        <td>{{dtd.name}}</td>
+                                        <td>{{dtd.filename}}</td>
+                                        <td>{{dtd.dtd}}</td>
+                                        <td class="wrap-link style-1">
+                                            <a class="link link-edit" href="{{path('crous_backend_dtd_add', {id: dtd.id})}}">{{'Edit'|trans}}</a>
+                                        </td>
+                                        <td class="wrap-link style-1">
+                                            <a class="link link-edit" onclick="return confirm('{{'Do you want to delete this record?'|trans}}');" href="{{path('crous_backend_dtd_delete', {id: dtd.id, token: token})}}">{{'Delete'|trans}}</a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {{pagination|raw}}
+                    </div>
                 </div>
-                <table class="table table-bordered">
-                    <thead>
-                        <tr>
-                            <th width="1%">{{'#'|trans}}</th>
-                            <th>{{'Label'|trans}}</th>
-                            <th>{{'File'|trans}}</th>
-                            <th>{{'Region'|trans}}</th>
-                            <th width="20%">{{'Action'|trans}}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for dtd in entities%}
-                            <tr>
-                                <td>{{loop.index}}</td>
-                                <td>{{dtd.name}}</td>
-                                <td>{{dtd.filename}}</td>
-                                <td>{{dtd.dtd}}</td>
-                                <td>
-                                    <a href="{{path('crous_backend_dtd_add', {id: dtd.id})}}">{{'Edit'|trans}}</a> |
-                                    <a onclick="return confirm('{{'Do you want to delete this record?'|trans}}');" href="{{path('crous_backend_dtd_delete', {id: dtd.id, token: token})}}">{{'Delete'|trans}}</a>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {{pagination|raw}}
             </div>
         </div>
     </div>

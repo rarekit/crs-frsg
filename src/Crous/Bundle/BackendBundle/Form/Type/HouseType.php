@@ -94,21 +94,21 @@ class HouseType extends AbstractType
         ))->add('infos', 'textarea', array(
             'label' => 'Infomation',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control tinymce',
                 'placeholder' => 'Infomation',
             ),
             'required' => false
         ))->add('services', 'textarea', array(
             'label' => 'Service',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control tinymce',
                 'placeholder' => 'Service',
             ),
             'required' => false
         ))->add('contact', 'textarea', array(
             'label' => 'Contact',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control tinymce',
                 'placeholder' => 'Contact',
             ),
             'required' => false
@@ -116,6 +116,7 @@ class HouseType extends AbstractType
                 'label' => 'Image',
                 'attr' => array(
                     'placeholder' => 'Image',
+                    'delete_route' => 'crous_backend_house_delete_image',
                 ),
                 'required' => false
         ))->add('sharingUrl', 'text', array(
