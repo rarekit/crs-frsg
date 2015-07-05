@@ -51,6 +51,7 @@ class UserType extends AbstractType
             'attr' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Username',
+                'autocomplete' => 'off'
             ),
             'required' => true
         ))->add('password', 'password', array(
@@ -58,6 +59,7 @@ class UserType extends AbstractType
             'attr' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Password',
+                'autocomplete' => 'off'
             ),
             'required' => true
         ))->add('firstname', null, array(
