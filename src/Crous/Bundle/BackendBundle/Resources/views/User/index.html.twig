@@ -36,10 +36,10 @@
                         <div class="navbar-tab-content">
                             <div id="myTabContent" class="tab-content">
                                 <div id="tab1" role="tabpanel" aria-labelledby="tab-1" class="tab-pane fade in active">
-                                    <div class="wrap-btn style-1">
+                                    <div class="wrap-btn style-1 text-center">
                                         <a href="{{path('crous_backend_user_add', {type:2})}}" title="création" class="link btn btn-default"><span class="text">création</span></a>
-                                        <a href="#" title="modification" class="link btn btn-default"><span class="text">modification</span></a>
-                                        <a href="#" title="suppression" class="link btn btn-default"><span class="text">suppression</span></a>
+                                        {#<a href="#" title="modification" class="link btn btn-default"><span class="text">modification</span></a>#}
+                                        <a href="{{path('crous_backend_user_add', {type: 2, id: id})}}" title="suppression" class="link btn btn-default"><span class="text">suppression</span></a>
                                     </div>
                                     <div class="content">
                                         <div id="accordion" role="tablist" aria-multiselectable="true" class="panel-group panel-form list-style">

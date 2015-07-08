@@ -57,7 +57,7 @@ class ScholarshipType extends AbstractType
         ))->add('scholarshipDate', null, array(
             'label' => 'Scholarship Date',
             'attr' => array(
-                'class' => 'form-control',
+                'class' => 'form-control datepicker',
                 'placeholder' => 'dd/mm/yyyy'
             ),
             'widget' => 'single_text',

@@ -6,7 +6,7 @@
 
 crous_backend_user_add:
     path:     /{type}/{id}
-    defaults: { _controller: CrousBackendBundle:User:addCustom, type: 2, id:null }
+    defaults: { _controller: CrousBackendBundle:User:addCustom, type: 1, id:null }
     requirements:
         type:  \d+
         id:  \d+

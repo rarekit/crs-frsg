@@ -39,6 +39,7 @@ template {
 a {
   background: transparent;
 }
+a:visited {color: #333333;}
 a:active,
 a:hover {
   outline: 0;
@@ -7015,6 +7016,9 @@ footer copyright {
   }
 }
 @media (min-width: 768px) {
+.btn-deconnect:visited {
+  color: #fff;
+}
   header {
     background-image: url(../images/bg-header-768.png);
   }
