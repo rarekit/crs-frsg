@@ -75,22 +75,22 @@ Setup Virtual Host
 
 Push Notification API
 ---------------------
-- Setting API information in app/config/parameters.yml
-
+1 - Setting API information in app/config/parameters.yml
+    
     push_url: 'http://ynp.sophiacom.fr/ynp/sandbox/sendNotification'
     push_api_key: 'api_key'
     push_shared_secret: 'secret'
     push_appname: 'com.youandpush.myapp'
     push_project: 'projectkey'
 
-- Code Implemented
-
+2 - Code Implemented
+    
     $apiUrl = $this->container->getParameter('push_url');
     $apiKey = $this->container->getParameter('push_api_key');
     $apiSecret = $this->container->getParameter('push_shared_secret');
     $apiAppName = $this->container->getParameter('push_appname');
     $apiProject = $this->container->getParameter('push_project');
-
+    
     $requestVars = array();
     $requestVars['project'] = $apiProject;
     $requestVars['message'] = $data['message'];
@@ -102,7 +102,7 @@ Push Notification API
     foreach ($requestVars as $key=>$value) {
         $arg = $arg.$key.$value;   
     }
-
+    
     $apiSig = md5($arg);
     $requestVars['api_sig'] = urlencode($apiSig);
     $requestVars['api_key'] = urlencode($apiKey);
@@ -113,6 +113,4 @@ Push Notification API
     } else {
         $this->addFlash('success', $this->get('translator')->trans('Send successful'));
     }
-
-
 
