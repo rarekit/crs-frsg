@@ -85,4 +85,3 @@ crous_backend:
             form:
                 class: ~
                 filter_class: ~
-        

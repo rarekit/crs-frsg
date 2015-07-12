@@ -19,7 +19,7 @@
               <li {%if route in ['crous_backend_flux_dashboard', 'crous_backend_house', 'crous_backend_service', 'crous_backend_region', 'crous_backend_splash', 'crous_backend_onlineservice'] %}class="active"{%endif%}>
                   <a href="{{path('crous_backend_flux_dashboard')}}" title="GESTION DES FLUX">GESTION DES FLUX</a>
               </li>
-              <li><a href="NOTIFICATIONS PUSH.html" title="NOTIFICATIONS PUSH">NOTIFICATIONS PUSH</a>
+              <li {%if route == 'crous_backend_push_notification' %}class="active"{%endif%}><a href="{{path('crous_backend_push_notification')}}" title="NOTIFICATIONS PUSH">NOTIFICATIONS PUSH</a>
               </li>
               <li><a href="statistiques.html" title="statistiques">statistiques</a>
               </li>

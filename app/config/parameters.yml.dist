@@ -19,4 +19,10 @@ parameters:
     #sync_period only accepted MIN, PM or AM
     sync_period: ['15MIN','30MIN','12PM']
     dtd_url: 'http://ftp.crous.parking.einden.com/'
+    
+    push_url: 'http://ynp.sophiacom.fr/ynp/sandbox/sendNotification'
+    push_api_key: 'api_key'
+    push_shared_secret: 'secret'
+    push_appname: 'com.youandpush.myapp'
+    push_project: 'projectkey'
 

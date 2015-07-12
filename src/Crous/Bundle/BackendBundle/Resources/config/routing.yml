@@ -16,6 +16,10 @@ crous_backend_flux_dashboard:
     path:     /flux-dashboard
     defaults: { _controller: CrousBackendBundle:Default:fluxDashboard }
 
+crous_backend_push_notification:
+    path:     /push-notification
+    defaults: { _controller: CrousBackendBundle:Push:index }
+
 crous_backend_region:
     resource: "@CrousBackendBundle/Resources/config/routing/region.yml"
     prefix:   /region

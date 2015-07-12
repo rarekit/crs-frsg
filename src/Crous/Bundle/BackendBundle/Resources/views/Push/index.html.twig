@@ -1,0 +1,28 @@
+{% extends 'CrousBackendBundle::layout.html.twig' %} 
+{% block meta%}
+    <title>{{'Push Notification'|trans}}</title>
+    <meta name="description" content="{{'Push Notification'|trans}}">
+    <meta name="keywords" content="{{'Push Notification'|trans}}">
+{% endblock %}
+{%block homecls%}class="blue-theme"{%endblock%}
+{% block body %}
+    <div class="inner ">
+        <form class="form-default formulaire-form" method="post" action="" enctype="multipart/form-data" novalidate="novalidate">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
+                    {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+                    <div class="form-body">
+                        {{form_widget(form)}}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-sm-offset-3">
+                    <div class="wrap-btn style-3">
+                        <button type="submit" id="save" name="save" title="{{'Save'|trans}}" class="btn btn-default">{{'Send'|trans}}</button>
+                    </div>
+                </div>
+            </div>
+        </form> 
+    </div>        
+{% endblock %}
+
