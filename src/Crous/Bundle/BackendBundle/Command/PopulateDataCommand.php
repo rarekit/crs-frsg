@@ -37,15 +37,15 @@ class PopulateDataCommand extends ContainerAwareCommand
                 if ($this->populateUser($em)) {
                     $output->writeln("<fg=green>Populating user data successful!</fg=green>");
                 }
+                /*if ($this->populateRegion($em)) {
+                    $output->writeln("<fg=green>Populating region data successful!</fg=green>");
+                }*/
+                break;
+            /*case 'region':
                 if ($this->populateRegion($em)) {
                     $output->writeln("<fg=green>Populating region data successful!</fg=green>");
                 }
-                break;
-            case 'region':
-                if ($this->populateRegion($em)) {
-                    $output->writeln("<fg=green>Populating region data successful!</fg=green>");
-                }
-                break;
+                break;*/
             
         }
     }
@@ -133,7 +133,7 @@ class PopulateDataCommand extends ContainerAwareCommand
         }
         return false;
     }
-
+/*
     protected function populateRegion($em)
     {
         if ($this->truncate($em, 'Crous\Bundle\BackendBundle\Entity\Region')) {
@@ -164,5 +164,5 @@ class PopulateDataCommand extends ContainerAwareCommand
         }
         return false;
     }
-
+*/
 }

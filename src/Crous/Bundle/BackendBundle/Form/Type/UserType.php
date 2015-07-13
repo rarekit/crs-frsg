@@ -76,6 +76,14 @@ class UserType extends AbstractType
                 'placeholder' => 'Lastname'
             ),
             'required' => true
+        ))->add('role', null, array(
+            'label' => 'Role',
+            'property' => 'name',
+            'empty_value' => "Select a value",
+            'attr' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Role',
+            )
         ))->add('email', null, array(
             'label' => 'Email',
             'attr' => array(

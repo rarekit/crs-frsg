@@ -90,6 +90,17 @@
                                                 <div id="headingFive" role="tab" class="panel-heading{{open}}">
                                                     <h4 id="item5" class="panel-title">
                                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="collapsed">
+                                                            {{'Role'|trans}}
+                                                        </a>
+                                                    </h4>
+                                                    {{form_widget(form.role)}}
+                                                    {{form_errors(form.role)}}
+                                                </div>
+                                            </div>
+                                            <div class="panel">
+                                                <div id="headingFive" role="tab" class="panel-heading{{open}}">
+                                                    <h4 id="item5" class="panel-title">
+                                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive" class="collapsed">
                                                             {{'Email'|trans}}
                                                         </a>
                                                     </h4>

@@ -5,14 +5,14 @@
     <div class="inner">
 <div class="bs-glyphicons">
     <ul class="bs-glyphicons-list">
-      
+        {% if is_granted('ROLE_ADMIN') %}
         <li>
             <a href="{{path('crous_backend_user_add')}}">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                 <span class="glyphicon-class">{{'User Management'|trans}}</span>
             </a>
         </li>
-      
+        {% endif %}
         <li>
             <a href="{{path('crous_backend_region_list')}}">
                 <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>

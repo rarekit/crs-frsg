@@ -6241,6 +6241,8 @@ button.close {
   background-color: #fff;
   border: 1px solid #ccc;
 }
+
+.info-form .active select,
 .info-form .active input {
   cursor: pointer;
   display: inline-block;
@@ -6673,12 +6675,14 @@ a:focus {
 .panel .panel-heading:active {
   /*background: #cccccc;*/
 }
+.panel .panel-heading select,
 .panel .panel-heading input {
   width: 50%;
 }
 .panel-form .panel-title {
   width: 250px;
 }
+.panel-form .panel-heading select,
 .panel-form .panel-heading input {
   margin: 0 25px;
 }
