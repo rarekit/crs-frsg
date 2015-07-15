@@ -39,7 +39,7 @@ class AssistanceManager extends BaseManager
      */
     protected function _filter($criteria)
     {
-        $acceptedKeys = array('keyword' => null);
+        $acceptedKeys = array('keyword' => null, 'region' => null);
         $criterias = array_intersect_key($criteria, $acceptedKeys);
         foreach ($criterias as $key => $value) {
             if (empty($value)) {

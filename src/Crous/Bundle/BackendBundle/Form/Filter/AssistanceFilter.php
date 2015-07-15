@@ -27,7 +27,17 @@ class AssistanceFilter extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('keyword', 'text', array(
+        $builder->add('region', 'entity', array(
+            'label' => 'Region',
+            'class' => 'CrousBackendBundle:Region',
+            'property' => 'name',
+            'empty_value' => "All",
+            'attr' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Region',
+            ),
+            'required' => false
+        ))->add('keyword', 'text', array(
             'label' => 'Keyword',
             'attr' => array(
                 'class' => 'form-control',

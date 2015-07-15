@@ -1,76 +1,90 @@
 {% extends 'CrousBackendBundle::layout.html.twig' %} 
 {% block meta%}
-    <title>{{'Scholaship Management'|trans}}</title>
-    <meta name="description" content="{{'Scholaship Management'|trans}}">
-    <meta name="keywords" content="{{'Scholaship Management'|trans}}">
+  <title>{{'Scholaship Management'|trans}}</title>
+  <meta name="description" content="{{'Scholaship Management'|trans}}">
+  <meta name="keywords" content="{{'Scholaship Management'|trans}}">
 {% endblock %}
 {%block homecls%}class="blue-theme"{%endblock%}
 {% block body %}
-    <div class="inner">
-        <div class="row">
-            <div class="row">
-                <div class="col-xs-12">
-                    {% include 'CrousBackendBundle:Block:messages.html.twig' %}
-                    <div class="form-body">
-                        <form method="get" action="" id="search-frm" name="search-frm" class="form-default search-form">
-                            <div class="row">
-                                <div class="col-sm-5 col-sm-offset-3">
-                                    <div class="col-sm-3">
-                                        <label for="text" class="label">{{'Keyword'|trans}}</label>
-                                    </div>
-                                    <div class="col-sm-9">
-                                        {{form_widget(filterForm.keyword)}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <div class="wrap-btn style-2 text-center">
-                                        <button type="submit" id="search" name="search" title="{{'Search'|trans}}" class="btn btn-default">{{'Search'|trans}}</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+  <div class="inner">
+    <div class="row">
+      <div class="row">
+        <div class="col-xs-12">
+          {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+          <div class="form-body">
+            <form method="get" action="" id="search-frm" name="search-frm" class="form-default search-form">
+              <div class="row">
+                <div class="col-sm-5">
+                  <div class="col-sm-3">
+                    <label class="label">{{'Region'|trans}}</label>
+                  </div>
+                  <div class="col-sm-9">
+                    <div class="custom-select">
+                      <span>-{{'All'|trans}}-</span>
+                      <a href="javascript:;" title="select" class="dropdown-select"><i class="icon-select"></i></a>
+                      {{form_widget(filterForm.region)}}
                     </div>
+                  </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="wrap-btn text-right">
-                        <a id="ajouter" href="{{path('crous_backend_scholarship_add')}}" name="ajouter" class="btn btn-default">{{'Add New'|trans}}</a>
-                    </div>
-                    <div class="table-responsive custom-table style-3">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th width="1%">{{'#'|trans}}</th>
-                                    <th>{{'Title'|trans}}</th>
-                                    <th>{{'Date'|trans}}</th>
-                                    <th width="10%"></th>
-                                    <th width="10%"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for scholarship in entities%}
-                                    <tr class="{% if loop.index % 2 == 1%}odd{%else%}even{%endif%}">
-                                        <td>{{loop.index}}</td>
-                                        <td>{{scholarship.title}}</td>
-                                        <td>{{scholarship.scholarshipDate|date("d/m/Y")}}</td>
-                                        <td class="wrap-link style-1">
-                                            <a class="link link-edit" href="{{path('crous_backend_scholarship_add', {id: scholarship.id})}}">{{'Edit'|trans}}</a>
-                                        </td>
-                                        <td class="wrap-link style-1">
-                                            <a class="link link-edit" onclick="return confirm('{{'Do you want to delete this record?'|trans}}');" href="{{path('crous_backend_scholarship_delete', {id: scholarship.id, token: token})}}">{{'Delete'|trans}}</a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                        {{pagination|raw}}
-                    </div>
+                <div class="col-sm-5 col-sm-offset-2">
+                  <div class="col-sm-3">
+                    <label for="text" class="label">{{'Keyword'|trans}}</label>
+                  </div>
+                  <div class="col-sm-9">
+                    {{form_widget(filterForm.keyword)}}
+                  </div>
                 </div>
-            </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="wrap-btn style-2 text-center">
+                    <button type="submit" id="search" name="search" title="{{'Search'|trans}}" class="btn btn-default">{{'Search'|trans}}</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="wrap-btn text-right">
+            <a id="ajouter" href="{{path('crous_backend_scholarship_add')}}" name="ajouter" class="btn btn-default">{{'Add New'|trans}}</a>
+          </div>
+          <div class="table-responsive custom-table style-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th width="1%">{{'#'|trans}}</th>
+                  <th>{{'Title'|trans}}</th>
+                  <th>{{'Region'|trans}}</th>
+                  <th>{{'Date'|trans}}</th>
+                  <th width="10%"></th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for scholarship in entities%}
+                <tr class="{% if loop.index % 2 == 1%}odd{%else%}even{%endif%}">
+                  <td>{{loop.index}}</td>
+                  <td>{{scholarship.title}}</td>
+                  <td>{%if scholarship.region is defined%}{{scholarship.region.name}}{%endif%}</td>
+                  <td>{{scholarship.scholarshipDate|date("d/m/Y")}}</td>
+                  <td class="wrap-link style-1">
+                    <a class="link link-edit" href="{{path('crous_backend_scholarship_add', {id: scholarship.id})}}">{{'Edit'|trans}}</a>
+                  </td>
+                  <td class="wrap-link style-1">
+                    <a class="link link-edit" onclick="return confirm('{{'Do you want to delete this record?'|trans}}');" href="{{path('crous_backend_scholarship_delete', {id: scholarship.id, token: token})}}">{{'Delete'|trans}}</a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            {{pagination|raw}}
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 {% endblock %}
 

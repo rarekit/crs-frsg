@@ -47,7 +47,16 @@ class AssistanceType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('title', null, array(
+        $builder->add('region', null, array(
+            'label' => 'Region',
+            'property' => 'name',
+            'empty_value' => "Select a region",
+            'attr' => array(
+                'class' => 'form-control',
+                'placeholder' => 'Region',
+            ),
+            'required' => true
+        ))->add('title', null, array(
             'label' => 'Title',
             'attr' => array(
                 'class' => 'form-control',

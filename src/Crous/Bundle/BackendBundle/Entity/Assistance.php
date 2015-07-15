@@ -24,6 +24,14 @@ class Assistance implements EntityInterface
     private $id;
     
     /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id")
+     * @Assert\NotBlank(message="This value must not be empty.")
+     */
+    private $region;
+   
+    /**
      * @ORM\OneToMany(targetEntity="AssistanceElement", mappedBy="assistance")
      */
     private $elements;
@@ -322,5 +330,28 @@ class Assistance implements EntityInterface
     public function getElements()
     {
         return $this->elements;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Crous\Bundle\BackendBundle\Entity\Region $region
+     * @return Assistance
+     */
+    public function setRegion(\Crous\Bundle\BackendBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Crous\Bundle\BackendBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }
