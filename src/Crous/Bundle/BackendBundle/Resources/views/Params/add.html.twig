@@ -1,0 +1,33 @@
+{% extends 'CrousBackendBundle::layout.html.twig' %} 
+{% block meta%}
+    <title>{{'DTD Management'|trans}}</title>
+    <meta name="description" content="{{'DTD Management'|trans}}">
+    <meta name="keywords" content="{{'DTD Management'|trans}}">
+{% endblock %}
+{%block homecls%}class="blue-theme"{%endblock%}
+{% block body %}
+    {% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
+    <div class="inner ">
+        <form class="form-default formulaire-form" method="post" action="" enctype="multipart/form-data" novalidate="novalidate">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% form_theme form 'CrousBackendBundle:Form:fields.html.twig' %}
+                    {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+                    <div class="form-body">
+                        {{form_widget(form)}}
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-sm-offset-3">
+                    <div class="wrap-btn style-3">
+                        <button type="submit" id="save" name="save" title="{{'Save'|trans}}" class="btn btn-default">{{'Save'|trans}}</button>
+                        <a type="submit" href="{{path('crous_backend_params_list')}}" class="btn btn-default">{{'Back'|trans}}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                
+            </div>
+        </form> 
+    </div>
+{% endblock %}
+

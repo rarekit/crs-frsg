@@ -37,15 +37,15 @@ class PopulateDataCommand extends ContainerAwareCommand
                 if ($this->populateUser($em)) {
                     $output->writeln("<fg=green>Populating user data successful!</fg=green>");
                 }
-                /*if ($this->populateRegion($em)) {
-                    $output->writeln("<fg=green>Populating region data successful!</fg=green>");
-                }*/
-                break;
-            /*case 'region':
-                if ($this->populateRegion($em)) {
-                    $output->writeln("<fg=green>Populating region data successful!</fg=green>");
+                if ($this->populateParams($em)) {
+                    $output->writeln("<fg=green>Populating parameters successful!</fg=green>");
                 }
-                break;*/
+                break;
+            case 'params':
+                if ($this->populateParams($em)) {
+                    $output->writeln("<fg=green>Populating parameters successful!</fg=green>");
+                }
+                break;
             
         }
     }
@@ -75,7 +75,7 @@ class PopulateDataCommand extends ContainerAwareCommand
     {
         if ($this->truncate($em, 'Crous\Bundle\BackendBundle\Entity\User')) {
             $users = array(
-                array('admin', 'admin', 'Johnny', 'Depp', 'ROLE_ADMIN', 'admin@crous.com', true),
+                array('admin', '123456', 'Phat', 'Nguyen', 'ROLE_ADMIN', 'admin@admin.com', true),
             );
             /* @var $userManager \Crous\Bundle\BackendBundle\Manager\UserManager */
             $userManager = $this->getContainer()->get('manager_factory')->create('user');
@@ -133,36 +133,34 @@ class PopulateDataCommand extends ContainerAwareCommand
         }
         return false;
     }
-/*
-    protected function populateRegion($em)
-    {
-        if ($this->truncate($em, 'Crous\Bundle\BackendBundle\Entity\Region')) {
-            $regionFile = $this->getContainer()->get('kernel')->getRootDir() . '/../data/region.xml';
-            $document = new \DOMDocument();
-            $document->load($regionFile);
 
-            $crawler = new Crawler();
-            $crawler->addDocument($document);
-            $nodes = $crawler->filter('database > table');
-            $manager = $this->getContainer()->get('manager_factory')->create('region');
-            foreach ($nodes as $node) {
-                $region = $this->getContainer()->get('entity_factory')->create('region');
-                $childNodes = $node->getElementsByTagName("column");
-                foreach($childNodes as $key => $item) {
-                    if ($key == 1) {
-                        $region->setCode($item->nodeValue);
-                    }
-                    if ($key == 2) {
-                        $region->setName($item->nodeValue)
-                                ->setEmail(strtolower($item->nodeValue) . "@crous.com");
-                    }
-                }
-                $region->setActive(true);
-                $manager->save($region);
+    protected function populateParams($em)
+    {
+        if ($this->truncate($em, 'Crous\Bundle\BackendBundle\Entity\Params')) {
+            $params = array(
+                array('dtd_url', 'http://ftp.crous.parking.einden.com/'),
+                array('push_url', 'http://ynp.sophiacom.fr/ynp/sandbox/sendNotification'),
+                array('push_api_key', 'api_key'),
+                array('push_shared_secret', 'secret'),
+                array('push_appname', 'com.youandpush.myapp'),
+                array('push_project', 'projectkey'),
+                array('export_ftp_host', '10.0.0.3'),
+                array('export_ftp_user', 'fptuser'),
+                array('export_ftp_passwd', '123456'),
+            );
+            /* @var $paramsManager \Crous\Bundle\BackendBundle\Manager\ParamsManager */
+            $paramsManager = $this->getContainer()->get('manager_factory')->create('params');
+            foreach ($params as $item) {
+                /* @var $role \Crous\Bundle\BackendBundle\Entity\Params */
+                $param = $this->getContainer()->get('entity_factory')->create('params');
+                $param->setName($item[0])
+                        ->setValue($item[1])
+                ;
+                $paramsManager->save($param);
             }
             return true;
         }
         return false;
     }
-*/
+
 }

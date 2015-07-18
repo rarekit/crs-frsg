@@ -42,7 +42,7 @@ class Region implements EntityInterface
     /**
      * @var integer
      *
-     * @ORM\Column(name="code", type="integer", unique=true)
+     * @ORM\Column(name="code", type="string", length=10, unique=true)
      * @Assert\NotBlank(message="This value must not be empty.")
      */
     private $code;

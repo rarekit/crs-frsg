@@ -85,3 +85,9 @@ crous_backend:
             form:
                 class: ~
                 filter_class: ~
+        params: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\Params
+            manager_class: \Crous\Bundle\BackendBundle\Manager\ParamsManager
+            form:
+                class: \Crous\Bundle\BackendBundle\Form\Type\ParamsType
+                filter_class: ~

@@ -1,0 +1,47 @@
+{% extends 'CrousBackendBundle::layout.html.twig' %} 
+{% block meta%}
+  <title>{{'Parameters Management'|trans}}</title>
+  <meta name="description" content="{{'Parameter Management'|trans}}">
+  <meta name="keywords" content="{{'Parameter Management'|trans}}">
+{% endblock %}
+{%block homecls%}class="blue-theme"{%endblock%}
+{% block body %}
+  <div class="inner">
+    <div class="row">
+      <div class="row">
+        <div class="col-xs-12">
+          {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+          <div class="wrap-btn text-right">
+            <a id="ajouter" href="{{path('crous_backend_params_add')}}" name="ajouter" class="btn btn-default">{{'Add New'|trans}}</a>
+          </div>
+          <div class="table-responsive custom-table style-3">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th width="1%">{{'#'|trans}}</th>
+                  <th>{{'Name'|trans}}</th>
+                  <th>{{'Value'|trans}}</th>
+                  <th width="10%"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for param in entities%}
+                <tr class="{% if loop.index % 2 == 1%}odd{%else%}even{%endif%}">
+                  <td>{{loop.index}}</td>
+                  <td>{{param.name}}</td>
+                  <td>{{param.value}}</td>
+                  <td class="wrap-link style-1">
+                    <a class="link link-edit" href="{{path('crous_backend_params_add', {id: param.id})}}">{{'Edit'|trans}}</a>
+                  </td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+            {{pagination|raw}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+

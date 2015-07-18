@@ -1,0 +1,11 @@
+crous_backend_params_list:
+    path:     /
+    defaults: { _controller: CrousBackendBundle:Params:index }
+
+crous_backend_params_add:
+    path:     /add/{id}
+    defaults: { _controller: CrousBackendBundle:Params:add, id:null }
+    
+crous_backend_params_delete:
+    path:     /delete/{id}
+    defaults: { _controller: CrousBackendBundle:Params:delete}

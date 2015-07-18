@@ -68,3 +68,6 @@ crous_backend_user:
     resource: "@CrousBackendBundle/Resources/config/routing/user.yml"
     prefix:   /user
 
+crous_backend_params:
+    resource: "@CrousBackendBundle/Resources/config/routing/params.yml"
+    prefix:   /params
