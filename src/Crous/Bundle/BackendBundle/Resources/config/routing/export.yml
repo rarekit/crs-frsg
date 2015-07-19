@@ -1,0 +1,9 @@
+crous_backend_export_process:
+    path:     /process/{type}/{regionId}
+    defaults: { _controller: CrousBackendBundle:Export:process, regionId:null }
+
+crous_backend_export_list:
+    path:     /{type}
+    defaults: { _controller: CrousBackendBundle:Export:index, type:SPLASH}
+
+

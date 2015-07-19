@@ -1,0 +1,87 @@
+{% extends 'CrousBackendBundle::layout.html.twig' %} 
+{% block meta%}
+    <title>{{'Export Manual'|trans}}</title>
+    <meta name="description" content="{{'Export Manual'|trans}}">
+    <meta name="keywords" content="{{'Export Manual'|trans}}">
+{% endblock %}
+{%block homecls%}class="blue-theme"{%endblock%}
+{% block body %}
+    <div class="inner">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-12">
+                    {% include 'CrousBackendBundle:Block:messages.html.twig' %}
+                    <ul class="nav nav-tabs" role="tablist">
+                        {% for key, type in types %}
+                            <li role="presentation" {%if key == active%}class="active"{%endif%}>
+                                <a href="#{{key}}" aria-controls="info" role="tab" data-toggle="tab">{{type|trans}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul> 
+
+                    <div class="tab-content" style="padding-top: 5px;">
+                        {% for key, type in types %}
+
+                            <div role="tabpanel" class="tab-pane{%if key==active%} active{%endif%}" id="{{key}}">
+                                <h3>{{type|trans}}</h3>
+                                <div class="table-responsive custom-table style-3">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="1%">{{'#'|trans}}</th>
+                                                <th>{{'Region'|trans}}</th>
+                                                <th>{{'Last State'|trans}}</th>
+                                                <th>{{'Last Attempt'|trans}}</th>
+                                                <th width="10%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% if key != 'CULTURALEVENT' %}
+                                                {% for region in regions %}
+                                                    <tr>
+                                                        <td>{{loop.index}}</td>
+                                                        <td>{{region.name}}</td>
+                                                    <td>{%if exportStatus[key][region.id] is defined %}{{exportStatus[key][region.id].lastState|lower}}{%else%}{{'not yet'|trans}}{%endif%}</td>
+                                                <td>{%if exportStatus[key][region.id] is defined %}{{exportStatus[key][region.id].lastAttempt|date('Y-m-d H:i:s')}}{%else%}{{'not yet'|trans}}{%endif%}</td>
+                                                <td class="wrap-link style-1">
+                                                    <a class="link link-edit" href="{{path('crous_backend_export_process', {type: key, regionId: region.id})}}">{{'Sync'|trans}}</a>
+                                                </td>
+                                                    </tr>
+                                                {%endfor%}
+                                            {% else %}
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>{{'All'|trans}}</td>
+                                                    <td>
+                                                        {%if exportStatus[key][0] is defined %}
+                                                            {{exportStatus[key][0].lastState|lower}}
+                                                        {% else %}
+                                                            {{'not yet'|trans}}
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {%if exportStatus[key][0] is defined %}
+                                                            {{exportStatus[key][0].lastAttempt|date('Y-m-d H:i:s')}}
+                                                        {%else%}
+                                                            {{'not yet'|trans}}
+                                                        {%endif%}
+                                                    </td>
+                                                    <td class="wrap-link style-1">
+                                                        <a class="link link-edit" href="{{path('crous_backend_export_process', {type: key, regionId: null})}}">{{'Sync'|trans}}</a>
+                                                    </td>
+                                                </tr>
+
+                                            {%endif%}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

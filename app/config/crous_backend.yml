@@ -91,3 +91,9 @@ crous_backend:
             form:
                 class: \Crous\Bundle\BackendBundle\Form\Type\ParamsType
                 filter_class: ~
+        exportStatus: 
+            entity_class: \Crous\Bundle\BackendBundle\Entity\ExportStatus
+            manager_class: \Crous\Bundle\BackendBundle\Manager\ExportStatusManager
+            form:
+                class: ~
+                filter_class: ~

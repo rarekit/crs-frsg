@@ -16,9 +16,20 @@ use Crous\Bundle\BackendBundle\Manager\Base\BaseManager;
 class ParamsManager extends BaseManager
 {
     protected $_entityName = 'Params';
+    protected $_paramsCache = array();
     
     public function getParams()
     {
-        return $this->getRepository()->findBy(array());
+        if (!empty($this->_paramsCache)) {
+            return $this->_paramsCache;
+        }
+        $list = $this->getRepository()->findBy(array());
+        $arrRet = array();
+        foreach ($list as $item) {
+            $arrRet[$item->getName()] = $item->getValue();
+        }
+
+        $this->_paramsCache = $arrRet;
+        return $this->_paramsCache;
     }
 }

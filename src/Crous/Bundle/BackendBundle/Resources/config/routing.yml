@@ -71,3 +71,7 @@ crous_backend_user:
 crous_backend_params:
     resource: "@CrousBackendBundle/Resources/config/routing/params.yml"
     prefix:   /params
+
+crous_backend_export:
+    resource: "@CrousBackendBundle/Resources/config/routing/export.yml"
+    prefix:   /export

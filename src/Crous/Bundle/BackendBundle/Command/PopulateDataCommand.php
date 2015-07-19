@@ -144,8 +144,9 @@ class PopulateDataCommand extends ContainerAwareCommand
                 array('push_shared_secret', 'secret'),
                 array('push_appname', 'com.youandpush.myapp'),
                 array('push_project', 'projectkey'),
-                array('export_ftp_host', '10.0.0.3'),
-                array('export_ftp_user', 'fptuser'),
+                array('export_ftp_host', '128.199.251.166'),
+                array('export_ftp_dir', '/home/ftpuser'),
+                array('export_ftp_user', 'ftpuser'),
                 array('export_ftp_passwd', '123456'),
             );
             /* @var $paramsManager \Crous\Bundle\BackendBundle\Manager\ParamsManager */

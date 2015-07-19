@@ -32,4 +32,15 @@ class RegionManager extends BaseManager
     {
         return $this->getRepository()->findBy(array(), array('name'=>'DESC'), 1000, 0);
     }
+
+    public function getAllByKey()
+    {
+        $arrByKey = array();
+        $list = $this->getRepository()->findBy(array());
+        foreach ($list as $item) {
+            $arrByKey[$item->getId()] = $item;
+        }
+
+        return $arrByKey;
+    }
 }
