@@ -17,11 +17,12 @@ class PushController extends Controller
             if ($form->isValid()) {
                 $data = $form->getData();
 
-                $apiUrl = $this->container->getParameter('push_url');
-                $apiKey = $this->container->getParameter('push_api_key');
-                $apiSecret = $this->container->getParameter('push_shared_secret');
-                $apiAppName = $this->container->getParameter('push_appname');
-                $apiProject = $this->container->getParameter('push_project');
+                $settings = $this->get('manager_factory')->create('params')->getParams();
+                $apiUrl = $settings['push_url'];
+                $apiKey = $settings['push_api_key'];
+                $apiSecret = $settings['push_shared_secret'];
+                $apiAppName = $settings['push_appname'];
+                $apiProject = $settings['push_project'];
 
                 $requestVars = array();
                 $requestVars['project'] = $apiProject;

@@ -60,8 +60,8 @@ class DtdSubscriber implements EventSubscriberInterface
                         ->create('feed');
             }
             
-            $url = $this->_container->getParameter('dtd_url') 
-                    . "{$region->getName()}-{$data->getFilename()}";
+            $settings = $this->_container->get('manager_factory')->create('params')->getParams();
+            $url = $settings['dtd_url'] . "{$region->getName()}-{$data->getFilename()}";
             $feed->setDtd($data)
                 ->setRegion($region)
                 ->setFilename("{$region->getName()}-{$data->getFilename()}")
