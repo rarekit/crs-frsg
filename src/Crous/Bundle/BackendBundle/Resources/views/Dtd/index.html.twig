@@ -19,8 +19,8 @@
                             <thead>
                                 <tr>
                                     <th width="1%">{{'#'|trans}}</th>
-                                    <th>{{'Label'|trans}}</th>
-                                    <th>{{'File'|trans}}</th>
+                                    <th>{{'Name'|trans}}</th>
+                                    <th>{{"Url's DTD"|trans}}</th>
                                     <th>{{'Region'|trans}}</th>
                                     <th width="10%"></th>
                                     <th width="10%"></th>
@@ -31,8 +31,8 @@
                                     <tr class="{% if loop.index % 2 == 1%}odd{%else%}even{%endif%}">
                                         <td>{{loop.index}}</td>
                                         <td>{{dtd.name}}</td>
-                                        <td>{{dtd.filename}}</td>
                                         <td>{{dtd.dtd}}</td>
+                                        <td>{{dtd.syncPeriod}}</td>
                                         <td class="wrap-link style-1">
                                             <a class="link link-edit" href="{{path('crous_backend_dtd_add', {id: dtd.id})}}">{{'Edit'|trans}}</a>
                                         </td>

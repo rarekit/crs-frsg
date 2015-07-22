@@ -32,7 +32,7 @@ class Dtd implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="xml_id", type="string", length=255)
+     * @ORM\Column(name="dtd", type="string", length=255)
      * @Assert\Url(message="This value is not a valid URL.")
      * @Assert\NotBlank(message="This value must not be empty.")
      */
@@ -41,7 +41,7 @@ class Dtd implements EntityInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string",  length=64)
+     * @ORM\Column(name="name", type="string",  length=64)
      * @Assert\NotBlank(message="This value must not be empty.")
      */
     private $name;
@@ -54,15 +54,7 @@ class Dtd implements EntityInterface
      */
     private $syncPeriod;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="filename", type="string",  length=128)
-     * @Assert\NotBlank(message="This value must not be empty.")
-     */
-    private $filename;
-
-    /**
+     /**
      * Get id
      *
      * @return integer 
@@ -141,26 +133,4 @@ class Dtd implements EntityInterface
         return $this->syncPeriod;
     }
 
-    /**
-     * Set filename
-     *
-     * @param string $filename
-     * @return DTD
-     */
-    public function setFilename($filename)
-    {
-        $this->filename = $filename;
-
-        return $this;
-    }
-
-    /**
-     * Get filename
-     *
-     * @return string 
-     */
-    public function getFilename()
-    {
-        return $this->filename;
-    }
 }

@@ -48,7 +48,7 @@ class DtdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name', null, array(
-            'label' => 'Label',
+            'label' => 'Name',
             'attr' => array(
                 'class' => 'form-control',
                 'placeholder' => 'Label'

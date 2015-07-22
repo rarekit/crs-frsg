@@ -61,10 +61,10 @@ class DtdSubscriber implements EventSubscriberInterface
             }
             
             $settings = $this->_container->get('manager_factory')->create('params')->getParams();
-            $url = $settings['dtd_url'] . "{$region->getName()}-{$data->getFilename()}";
+            $url = $settings['dtd_url'] . "{$region->getName()}-{$data->getName()}";
             $feed->setDtd($data)
                 ->setRegion($region)
-                ->setFilename("{$region->getName()}-{$data->getFilename()}")
+                ->setFilename("{$region->getName()}-{$data->getName()}")
                 ->setEmail($region->getEmail())
                 ->setUrl($url)
                 ->setActive(true)
@@ -81,17 +81,6 @@ class DtdSubscriber implements EventSubscriberInterface
     {
         $form = $event->getForm();
         $data = $event->getData();
-        if (is_null($data->getId())) {
-            $form->add('filename', null, array(
-                'label' => 'Filename on FTP',
-                'attr' => array(
-                    'class' => 'form-control',
-                    'placeholder' => 'Filename on FTP',
-                ),
-                'required' => true
-            ));
-        }
-        
         $choices = array();
         $syncPeriod = $this->_container->getParameter('sync_period');
         foreach ($syncPeriod as $val) {
